@@ -56,8 +56,62 @@ object GregorianCalendar {
       case _ => 31
     }
 
-  def toGregorianDate(d : Int) : GregorianDate =  new GregorianDate(1,1,1)
+/**
+  GregorianDate(int d) { // Computes the Gregorian date from the absolute date.
+    
+    // Search forward year by year from approximate year
+    year = d/366;
+    while (d >= GregorianDate(1,1,year+1))
+      year++;
+    // Search forward month by month from January
+    month = 1;
+    while (d > GregorianDate(month, LastDayOfGregorianMonth(month,year), year))
+      month++;
+    day = d - GregorianDate(month,1,year) + 1;
+  }
 
+*/
+  def toGregorianDate(d : Int) : GregorianDate = {
+    val year : Int = d / 366 
+    def getYear (aYear : Int) : Int = {
+        val date = gDateToDay(new GregorianDate(1, 1, aYear))
+        if (d > date)
+          getYear(aYear + 1) 
+        else
+          aYear
+        }
+    //search forward for the month.
+    def getMonth(month : Int, year : Int) : Int = {
+        val lday = lastDayOfGregorianMonth(month, year)
+        val date = gDateToDay(new GregorianDate(month, lday, year))
+        if (d > date)
+          getMonth(month + 1, year)
+        else
+          month    
+    }
+    val approxDate = {
+      val aY = new GregorianDate(1, 1, getYear(year))
+      new GregorianDate(getMonth(1, aY.y), 1, aY.y)
+    }
+    val day = d - (gDateToDay(approxDate)) + 1;
+    new GregorianDate(approxDate.m, day, approxDate.y)
+    
+
+  }
+
+  /*
+  operator int() { // Computes the absolute date from the Gregorian date.
+    int N = day;           // days this month
+    for (int m = month - 1;  m > 0; m--) // days in prior months this year
+      N = N + LastDayOfGregorianMonth(m, year);
+    return
+      (N                    // days this year
+       + 365 * (year - 1)   // days in previous years ignoring leap days
+       + (year - 1)/4       // Julian leap days before this year...
+       - (year - 1)/100     // ...minus prior century years...
+       + (year - 1)/400);   // ...plus prior years divisible by 400
+  }  
+  */
 
   def gDateToDay(d : GregorianDate) : Int = {
     val (months : Seq[Int]) = for(i <- d.m - 1 to 1) yield i
