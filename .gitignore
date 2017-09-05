@@ -1,4 +1,5 @@
 target/
 __pycache__
 toolbox.classpath
-
+*.class
+*.log
