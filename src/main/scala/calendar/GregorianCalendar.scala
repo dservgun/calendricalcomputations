@@ -126,4 +126,48 @@ object GregorianCalendar {
     - (d.y -1) / 100
     + (d.y - 1) /400)
   }
+/*
+GregorianDate NthXday(int n, int x, int month, int year, int day = 0)
+// The Gregorian date of nth x-day in month, year before/after optional day.
+// x = 0 means Sunday, x = 1 means Monday, and so on.  If n<0, return the nth
+// x-day before month day, year (inclusive).  If n>0, return the nth x-day
+// after month day, year (inclusive).  If day is omitted or 0, it defaults
+// to 1 if n>0, and month's last day otherwise.
+{
+  if (n > 0) {
+    if (day == 0)
+      day = 1;  // default for positive n
+    return GregorianDate
+      ((7 * (n - 1)) + XdayOnOrBefore(6 + GregorianDate(month, day, year), x));
+  }
+  else {
+    if (day == 0)
+      day = LastDayOfGregorianMonth(month, year);;  // default for negative n
+    return GregorianDate
+      ((7 * (n + 1)) + XdayOnOrBefore(GregorianDate(month, day, year), x));
+  }
+}
+*/
+  /**
+  The gregorian date of nth x-day in month, year, before/after optional day
+  */
+  def NthXDay(n : Int, x : Int , month : Int, year : Int, day : Option[Int]) = 
+
+    if (n > 0) {
+        val referenceDate : Int = 
+          day match {
+            case None =>  gDateToDay(new GregorianDate(month, 1, year))
+            case Some(d) => gDateToDay(new GregorianDate(month, d, year))
+        }
+        toGregorianDate((7 * (n - 1)) + xdayOnOrBefore(6 + referenceDate, x))
+      } else {          
+          val referenceDate = 
+            day match {
+              case None => 
+                gDateToDay(new GregorianDate(month, lastDayOfGregorianMonth(month, year), year))
+              case Some(d) => 
+                gDateToDay(new GregorianDate(month, d, year))
+            } 
+          toGregorianDate((7 * (n + 1)) + xdayOnOrBefore(referenceDate, x))
+      } 
 }
