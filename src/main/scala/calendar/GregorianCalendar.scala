@@ -39,7 +39,9 @@ object GregorianCalendar {
   def extractMonth (aDate : Date) : Month = aDate.m
   def extractDay (aDate : Date) : Month = aDate.d  
   def extractYear (aDate : Date) : Year = aDate.y
-  def xdayOnOrBefore(d : Int , x : Int) : Int = (d - ((d - x) %7))
+
+  
+  def xdayOnOrBefore(d : Int , x : Int) : Int = (d - ((d - x) % 7))
   //TODO: Can be written better, though this seems to do the job.
   def lastDayOfGregorianMonth(month : Int, year : Int) : Int = 
     month match {
@@ -74,8 +76,10 @@ object GregorianCalendar {
   def toGregorianDate(d : Int) : GregorianDate = {
     val year : Int = d / 366 
     def getYear (aYear : Int) : Int = {
-        val date = gDateToDay(new GregorianDate(1, 1, aYear))
-        if (d > date)
+        println("Calling getYear " + aYear)
+        val date = gDateToDay(new GregorianDate(1, 1, aYear + 1))
+        println ("Some date " + date + " Input " + d);
+        if (d >= date)
           getYear(aYear + 1) 
         else
           aYear
@@ -83,8 +87,10 @@ object GregorianCalendar {
     //search forward for the month.
     def getMonth(month : Int, year : Int) : Int = {
         val lday = lastDayOfGregorianMonth(month, year)
+        println("Some month " + month + " " + year + "  " + lday)
         val date = gDateToDay(new GregorianDate(month, lday, year))
-        if (d > date)
+        println ("Date " + date);
+        if (d >= date)
           getMonth(month + 1, year)
         else
           month    
@@ -93,11 +99,11 @@ object GregorianCalendar {
       val aY = new GregorianDate(1, 1, getYear(year))
       new GregorianDate(getMonth(1, aY.y), 1, aY.y)
     }
-    val day = d - (gDateToDay(approxDate)) + 1;
+    val day = d - (gDateToDay(new GregorianDate(approxDate.m, 1, approxDate.y))) + 1;
     new GregorianDate(approxDate.m, day, approxDate.y)
     
-
   }
+
 
   /*
   operator int() { // Computes the absolute date from the Gregorian date.
@@ -114,13 +120,15 @@ object GregorianCalendar {
   */
 
   def gDateToDay(d : GregorianDate) : Int = {
-    val (months : Seq[Int]) = for(i <- d.m - 1 to 1) yield i
-    val mDays = 
-      months.foldLeft(d.d) {
-          (z, f) => 
-            z + (lastDayOfGregorianMonth(f, d.y))
-          }
-    (mDays 
+    var N = d.d 
+    var m = d.m - 1
+    while (m > 0) {
+      N = N + lastDayOfGregorianMonth(m, d.y);
+      m = m - 1
+    }
+
+    println ("mDays " + N)
+    (N
     + (365 * (d.y - 1))
     + (d.y -1) / 4 
     - (d.y -1) / 100
@@ -151,8 +159,7 @@ GregorianDate NthXday(int n, int x, int month, int year, int day = 0)
   /**
   The gregorian date of nth x-day in month, year, before/after optional day
   */
-  def NthXDay(n : Int, x : Int , month : Int, year : Int, day : Option[Int]) = 
-
+  def NthXDay(n : Int, x : Int , month : Int, year : Int, day : Option[Int]) : GregorianDate = 
     if (n > 0) {
         val referenceDate : Int = 
           day match {
@@ -170,4 +177,9 @@ GregorianDate NthXday(int n, int x, int month, int year, int day = 0)
             } 
           toGregorianDate((7 * (n + 1)) + xdayOnOrBefore(referenceDate, x))
       } 
+
+  def laborDay(year : Int) = NthXDay(1, 1, 9, year, None)
+  
+  def printDate(aGregorianDate : GregorianDate) = 
+    print(aGregorianDate.m + "/" + aGregorianDate.d + "/" + aGregorianDate.y) 
 }

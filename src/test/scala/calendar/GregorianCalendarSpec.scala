@@ -11,4 +11,8 @@ class GregorianCalendarSpec extends FlatSpec with Matchers {
     	toGregorianDate(gDateToDay(aDate)) == (aDate)
   }
 
+  "Labor day this year " should "work correctly " in {
+  		laborDay(2017) shouldEqual (new GregorianDate(9, 4, 2017))
+  }
+
 }
