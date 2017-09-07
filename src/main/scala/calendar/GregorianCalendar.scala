@@ -178,10 +178,30 @@ GregorianDate NthXday(int n, int x, int month, int year, int day = 0)
           toGregorianDate((7 * (n + 1)) + xdayOnOrBefore(referenceDate, x))
       } 
 
+  // First monday of september
   def laborDay(year : Int) = NthXDay(1, 1, 9, year, None)
   //  (Nth-Kday -1 1 5 year));; Last Monday in May.
   def memorialDay(year : Int) = NthXDay(-1, 1, 5, year, None)
-   
+/*(defun daylight-savings-start (year)
+;; Absolute date of the start of American daylight savings time
+;; in Gregorian $year$.
+  (Nth-Kday 1 0 4 year));; First Sunday in April.
+*/
+  def daylightSavingsStart(year : Int) = NthXDay(2, 0 , 3, year, None)
+/*
+(defun daylight-savings-end (year)
+;; Absolute date of the end of American daylight savings time
+;; in Gregorian $year$.
+  (Nth-Kday -1 0 10 year));; Last Sunday in October.
+*/
+  def daylightSavingsEnd(year : Int) = NthXDay(1, 0, 11, year, None);
+  /*
+  (defun christmas (year)
+  ;; Absolute date of Christmas in Gregorian $year$.
+    (absolute-from-gregorian (list 12 25 year)))
+  */
+  def christmas(year : Int) = gDateToDay(new GregorianDate(12, 25, year))
+  def christmasDay(year: Int) = toGregorianDate(christmas(year))
   def printDate(aGregorianDate : GregorianDate) = 
     print(aGregorianDate.m + "/" + aGregorianDate.d + "/" + aGregorianDate.y) 
 }
