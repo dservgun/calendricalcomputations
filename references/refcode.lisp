@@ -1,4 +1,5 @@
-;; The following Lisp code is from ``Calendrical
+;; The following Scala code is portef from the 
+;; the Lisp code is from ``Calendrical
 ;; Calculations'' by Nachum Dershowitz and Edward
 ;; M. Reingold, Software---Practice & Experience, vol. 20,
 ;; no. 9 (September, 1990), pp. 899--928 and from
@@ -7,8 +8,6 @@
 ;; and Stewart M. Clamen, Software---Practice & Experience,
 ;; vol. 23, no. 4 (April, 1993), pp. 383--404.
 
-;; This code is in the public domain, but any use of it
-;; should publically acknowledge its source.
 
 (defun quotient (m n)
    (floor (/ m n)))
