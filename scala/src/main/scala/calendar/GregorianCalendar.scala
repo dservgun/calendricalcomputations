@@ -116,19 +116,21 @@ object GregorianCalendar {
   */
 
   def gDateToDay(d : GregorianDate) : Int = {
-    var N = d.d 
-    var m = d.m - 1
-    while (m > 0) {
-      N = N + lastDayOfGregorianMonth(m, d.y);
-      m = m - 1
+    def accum(s : Int, m : Int, result : Int) : Int = {
+      if (m > 0) {
+        accum(s, m - 1, result + lastDayOfGregorianMonth(m, d.y))
+      }else
+        result;
     }
-
-    (N
-    + (365 * (d.y - 1))
-    + (d.y -1) / 4 
-    - (d.y -1) / 100
-    + (d.y - 1) /400)
+    val n = accum(d.d, d.m - 1, d.d); 
+    (n 
+      + (365 * (d.y - 1))
+      + (d.y - 1) / 4 
+      - (d.y - 1) / 100
+      + (d.y - 1) / 400
+      )
   }
+
 /*
 GregorianDate NthXday(int n, int x, int month, int year, int day = 0)
 // The Gregorian date of nth x-day in month, year before/after optional day.
@@ -170,7 +172,7 @@ GregorianDate NthXday(int n, int x, int month, int year, int day = 0)
               case Some(d) => 
                 gDateToDay(new GregorianDate(month, d, year))
             } 
-          toGregorianDate((7 * (n + 1)) + xdayOnOrBefore(referenceDate, x))
+        toGregorianDate((7 * (n + 1)) + xdayOnOrBefore(referenceDate, x))
       } 
 
   // First monday of september
@@ -198,5 +200,5 @@ GregorianDate NthXday(int n, int x, int month, int year, int day = 0)
   def christmas(year : Int) = gDateToDay(new GregorianDate(12, 25, year))
   def christmasDay(year: Int) = toGregorianDate(christmas(year))
   def printDate(aGregorianDate : GregorianDate) = 
-    print(aGregorianDate.m + "/" + aGregorianDate.d + "/" + aGregorianDate.y) 
+    aGregorianDate.m + "/" + aGregorianDate.d + "/" + aGregorianDate.y
 }
