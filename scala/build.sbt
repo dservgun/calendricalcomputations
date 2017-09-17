@@ -1,5 +1,8 @@
 import Dependencies._
 
+
+fork := true
+libraryDependencies += ("org.scala-stm" %% "scala-stm" % "0.8")
 lazy val root = (project in file(".")).
   settings(
     inThisBuild(List(
