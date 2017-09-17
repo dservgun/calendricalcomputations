@@ -8,28 +8,27 @@ object SimpleCache {
     println(s"${Thread.currentThread.getName}: $msg")
   }
 
-  val myVal : TMap[String, String] = TMap()
-  def add(key : String, value : String) : Unit = atomic {
+  def add[K, V](cacheMap : TMap[K, V]) (key : K, value : V) : Unit = atomic {
     implicit txn => 
-      myVal.put(key, value)
+      cacheMap.put(key, value)
   }
-  def remove(key : String) : Unit = atomic {
+  def remove[K, V] (cacheMap : TMap [K, V]) (key : K) : Unit = atomic {
     implicit txn =>
-      myVal.remove(key)
+      cacheMap.remove(key)
   }
-  def size() : Int = atomic {
-      implicit txn => myVal.size
+  def size[K, V] (cacheMap : TMap[K, V]) : Int = atomic {
+      implicit txn => cacheMap.size
   }
 
   type FileName = String
-  def load(aFileName : FileName) = {
+
+  def load[K, V] (splitter : String => (K, V)) (aFileName : FileName) (cacheMap : TMap[K, V]) : Unit = {
       val source = Source.fromFile(aFileName);
       try { 
         val lines = source.getLines.toList
         lines.map(x => {
-              val elems = x.split('|')
-              log("Adding elems " + elems(0) + " -> " + elems(1))
-              add(elems(0), elems(1))
+              val (k, v) = splitter(x)
+              add(cacheMap)(k,v)
               })
       } catch {
         case e: Exception => 
@@ -37,21 +36,21 @@ object SimpleCache {
       } finally {
         source.close
       }
-      Future {
-        log("Removing elems " + "key1")
-        remove("key1")
-      }
-      Thread.sleep(4000)
     }
 
-  def refresh (interval : Int)(f : FileName => Unit) (aFileName : FileName)  : Unit = 
+  //TODO: Change this to Either.
+  def refresh[K, V] (interval : Int)
+    (splitter : (String => (K, V)))
+    (aFileName : FileName) 
+    (cacheMap : TMap[K,V]) : Unit = 
   {
-    f (aFileName)
+    load (splitter) (aFileName) (cacheMap)
     Thread.sleep(interval)
-    refresh (interval)(f)(aFileName)
+    refresh (interval)(splitter)(aFileName) (cacheMap)
   }
-  def loadPeriodically(interval : Int) (aFileName : FileName) : Unit = 
+
+  def loadPeriodically[K, V] (cacheMap : TMap[K,V]) (spl : String => (K, V)) (interval : Int) (aFileName : FileName) : Unit = 
   {
-    refresh(interval) (load) (aFileName)
+    refresh(interval)(spl)(aFileName)(cacheMap)
   }
 }
