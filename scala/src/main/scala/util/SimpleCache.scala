@@ -5,11 +5,13 @@ object SimpleCache {
   import scala.concurrent.stm._
   import scala.io.Source
 
-  object NetworkCommander {
+  object NetworkServer {
     import java.net.{Socket, ServerSocket}
     import java.util.concurrent.{Executors, ExecutorService}
     import java.util.Date
     import java.io._
+    type Port = Int 
+    type PoolSize = Int
     class NetworkService(port: Int, poolSize: Int) extends Runnable {
       val serverSocket = new ServerSocket(port)
       val pool: ExecutorService = Executors.newFixedThreadPool(poolSize)
@@ -41,9 +43,11 @@ object SimpleCache {
             socket.getOutputStream.close()
       }
     }
-    def start() = (new NetworkService(20020, 2)).run
+    def start(port : Port, poolSize : PoolSize) = (new NetworkService(port, poolSize)).run
   }
   object CommandAndControl {
+    type IntervalMs = Int 
+
     sealed trait Command
     case object Start extends Command 
     case object Stop extends Command
@@ -149,34 +153,8 @@ object SimpleCache {
 
   import CommandAndControl._
   def loadPeriodically[K, V] (spl : String => Either[String, (K, V)]) (interval : Int) 
-      (aFileName : FileName) (cacheMap : TMap[K,V]): Unit = 
-  {
-    currentState() match {
-      case Start => refresh(interval)(spl)(aFileName)(cacheMap)
-      case Stop => ()
-    }    
-    
-  }
+      (aFileName : FileName) (cacheMap : TMap[K,V]): Unit =  
+        refresh(interval)(spl)(aFileName)(cacheMap) 
 }
 
-object SimpleCacheTest {
-  import scala.concurrent._
-  import ExecutionContext.Implicits.global
-  import scala.concurrent.stm._
-  import scala.io.Source
 
-  type CustomType = (String, String)
-  def splitter (a : String) : Either[String, (String, CustomType)] = 
-    {
-      val elems = a.split('|')
-      if (elems.size == 2)
-        Right(elems(0), (elems(0), elems(1)))
-      else
-        Left ("Unable to parse line " + a)
-    }
-   def loadTest(aFile : String) = {
-      val cache : TMap[String, CustomType] = TMap()
-      SimpleCache.loadPeriodically (splitter) (1000) (aFile) (cache)
-   }
-
-}
