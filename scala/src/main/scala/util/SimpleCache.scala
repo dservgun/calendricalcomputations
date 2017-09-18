@@ -78,10 +78,11 @@ object SimpleCache {
   }
 
   def log(msg: String) {
-    println(s"${Thread.currentThread.getName}: $msg")
+    val dateTime = new java.util.Date()
+    println(s"${Thread.currentThread.getName}: $dateTime : $msg")
   }
 
-
+  // Cache operations.
   def clear[K, V] (cacheMap : TMap[K, V]) : Unit = atomic {
     implicit txn => 
       cacheMap.empty
@@ -139,7 +140,6 @@ object SimpleCache {
       }
     }
 
-  //TODO: Change this to Either.
   def refresh[K, V] (interval : Int)    
     (splitter : (String => Either[String, (K, V)]))
     (aFileName : FileName) 
