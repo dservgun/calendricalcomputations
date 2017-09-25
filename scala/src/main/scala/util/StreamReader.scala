@@ -13,7 +13,7 @@ object StreamTransducers {
 
     }
       def repeat: Process[I,O] = {
-        def go(p: Process[I,O]): Process[I,O] = p match {
+        def go(aProcess: Process[I,O]): Process[I,O] = aProcess match {
           case Halt() => go(this)
           case Await(recv) => Await {
             case None => recv(None)
