@@ -3,6 +3,7 @@ package calendar
 import org.scalatest._
 import scala.calendar.GregorianCalendar._;
 import scala.calendar.GregorianCalendar.GregorianDate; 
+import cache._
 
 
 class GregorianCalendarSpec extends FlatSpec with Matchers {
@@ -15,7 +16,7 @@ class GregorianCalendarSpec extends FlatSpec with Matchers {
   		laborDay(2017) shouldEqual (new GregorianDate(9, 4, 2017))
   }
   "Months " should "work" in {
-  	val aDate = toGregorianDateF(32);
+  	val aDate = toGregorianDate(32);
   	val dString = printDate(aDate) 
   	val cmpString = printDate(new GregorianDate(2, 1, 1))
   	dString shouldEqual cmpString
