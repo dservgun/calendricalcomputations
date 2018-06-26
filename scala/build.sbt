@@ -3,6 +3,7 @@ import Dependencies._
 
 fork := true
 libraryDependencies += ("org.scala-stm" %% "scala-stm" % "0.8")
+libraryDependencies += ("com.lihaoyi" %% "fastparse" % "1.0.0")
 lazy val root = (project in file(".")).
   settings(
     inThisBuild(List(
