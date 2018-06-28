@@ -1,6 +1,6 @@
 import Dependencies._
 
-
+scalacOptions ++= Seq("-Xfatal-warnings")
 fork := true
 libraryDependencies += ("org.scala-stm" %% "scala-stm" % "0.8")
 libraryDependencies += ("com.lihaoyi" %% "fastparse" % "1.0.0")

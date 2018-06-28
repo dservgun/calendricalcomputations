@@ -7,7 +7,7 @@ object GraphUtils extends scala.App {
   val initVisitor : Visitor = (Set(),Set(), Set())
 
   case class Graph(adjList : AdjacencyList) {
-    def addNode(aNode : Int) = {
+    def addNode(aNode : Int) : AdjacencyList = {
       adjList + (aNode -> Set())
     }
 

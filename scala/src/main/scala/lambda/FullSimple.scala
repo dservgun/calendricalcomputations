@@ -1,19 +1,23 @@
 package lambda;
 
 
+object Support {
+  import java.io._
+  case class FileInfo(file : File, line : Int, char : Int)  
+}
+
+import Support._
 /**
 * All of the code is copy of the ml implementation from Benjamin Pierce's
 * book on types and programming languages.
 */
 object Syntax {
-  import java.io._
-  case class FileInfo(file : File, line : Int, char : Int)
 
   sealed trait Tipe 
   case class TyVar (fileInfo : Int, dbIndex : Int) extends Tipe
   case class TyId (identifier : String) extends Tipe 
-  case class TyArr (funType : (TyArr, TyArr)) extends Tipe
-  case object TUnit extends Tipe
+  case class TyArr (funType : (Tipe, Tipe)) extends Tipe
+  case object TyUnit extends Tipe
   case class TyRecord (fields : List[(String, Tipe)]) extends Tipe
   case class TyVariant (sumTypes : List[(String, Tipe)]) extends Tipe
   case object TyBool extends Tipe
@@ -58,9 +62,17 @@ object Binding {
   case class TyAbbBind (tipe : Tipe) extends Binding
 }
 
+object Error {
+  def error(fileInfo : FileInfo, message : String) : Int = {    
+    println (s"${fileInfo} : ${message}");
+    -1
+  }
+
+}
 object Context {
   import Binding._
   import Syntax._
+  import Error._
   type ContextPair = (String, Binding)
   case class Context(context : List[ContextPair]) {
     def length = context.length
@@ -79,29 +91,90 @@ object Context {
       else Context((aName, NameBinding) :: context)
     def index2Name(fileInfo : FileInfo, anIndex : Int) : String = {
       try {
-        context(anIndex)
+        context(anIndex)._1
       }catch {
-        case(Exception(e)) => {
+        case ex : Exception => {
           val message = s"Variable lookup failure ${anIndex} : context size : ${context.length}"
           error(fileInfo, message)
+          throw ex
         }
       }
-    def name2Index (fileInfo : FileInfo, aName : String, aContext : List[ContextPair]) : Int = {
+    }
+    def name2Index (fileInfo : FileInfo, 
+        aName : String, aContext : List[ContextPair]) : Int = {
       context match {
-        case (List()) => error(fileInfo, s"Identifier ${aName} is unbound")
+        case (List()) => 
+          error(fileInfo, s"Identifier ${aName} is unbound")
         case aList@((h, _) :: t) => 
           if (h == aName) 0 
           else (1 + name2Index(fileInfo, aName, t))
       }
     }
+
+    //Shifting operation: the operation of shifting a nameless
+    //lambda terms based on de-Breujin indices.
+    //Walk the type map, here it seems to be a simple 
+    //walk with no shifting of types.
+    def tymap (onvar : (Int, Int, Int) => Tipe , cutoff : Int, typeT : Tipe) = {
+      def walk(cutoff : Int , typeT : Tipe) : Tipe = {
+        typeT match {
+          // case (TyVar(x, n)) => ???//what is the type of onvar
+          case (tyT@(TyId(b))) => tyT 
+          case (TyString) => TyString 
+          case (TyUnit) => TyUnit 
+          case (TyRecord (fieldTypes)) => 
+              TyRecord (fieldTypes.map((ele) => (ele._1, walk(cutoff, ele._2))))
+          case TyFloat => TyFloat 
+          case TyBool => TyBool 
+          case TyNat => TyNat 
+          case TyArr (typePair) => 
+              TyArr((walk(cutoff, typePair._1), 
+                      walk(cutoff, typePair._2)))
+          case TyVariant(fieldTypes) => 
+              TyVariant (fieldTypes.map((ele) => (ele._1, walk(cutoff, ele._2))))
+          case TyVar(x, n) => onvar(cutoff, x, n)
+        }
+      }
+      walk(cutoff, typeT)
     }
+
+    def tmmap (onvar : ((FileInfo, Int, Int, Int) => Term), 
+                ontype : ((Int, Tipe) => Tipe),
+                cutoff : Int, 
+                term : Term) = {
+      def walk(cutoff : Int, term : Term) : Term = 
+        term match {
+          case (TmInert(fi, tipe)) => TmInert(fi, ontype(cutoff, tipe))
+          case (TmVar(fi, x, n)) => onvar(fi, cutoff, x, n)
+          case (TmAbs(fi, x, tyT1, t2)) => 
+              TmAbs(fi, x, ontype(cutoff, tyT1), 
+                      walk(cutoff + 1, t2))
+          case (TmApp(fi, t1, t2)) => 
+              TmApp (fi, walk(cutoff, t1), walk(cutoff, t2))
+          case (TmLet(fi, x, t1, t2)) => 
+              TmLet(fi, x, walk(cutoff, t1), walk(cutoff + 1, t2))
+          case (TmFix(fi,t1)) => TmFix(fi, walk(cutoff, t1))
+          case (t@TmTrue(fi)) => t
+          case (f@TmFalse(fi)) => f 
+          case (TmIf(fi, t1, t2, t3)) => 
+              TmIf(fi, walk(cutoff, t1), walk(cutoff, t2), walk(cutoff, t3))
+          case (t@TmString(fi, aString)) => t
+          case (t@TmUnit(fi)) => t 
+
+
+
+
+        }
+    }    
   }
+
   sealed trait Command 
   case class Eval (info : FileInfo, aTerm : Term) extends Command 
   case class Bind (info : FileInfo, name : String, aBinding : Binding) extends Command 
 
 
 }
+
 object Core {
 
 }
