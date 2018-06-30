@@ -13,34 +13,34 @@ import Support._
 */
 object Syntax {
 
-  sealed trait Tipe 
-  case class TyVar (fileInfo : Int, dbIndex : Int) extends Tipe
-  case class TyId (identifier : String) extends Tipe 
-  case class TyArr (funType : (Tipe, Tipe)) extends Tipe
-  case object TyUnit extends Tipe
-  case class TyRecord (fields : List[(String, Tipe)]) extends Tipe
-  case class TyVariant (sumTypes : List[(String, Tipe)]) extends Tipe
-  case object TyBool extends Tipe
-  case object TyString extends Tipe 
-  case object TyFloat extends Tipe
-  case object TyNat extends Tipe
+  sealed trait Type 
+  case class TyVar (fileInfo : Int, dbIndex : Int) extends Type
+  case class TyId (identifier : String) extends Type 
+  case class TyArr (funType : (Type, Type)) extends Type
+  case object TyUnit extends Type
+  case class TyRecord (fields : List[(String, Type)]) extends Type
+  case class TyVariant (sumTypes : List[(String, Type)]) extends Type
+  case object TyBool extends Type
+  case object TyString extends Type 
+  case object TyFloat extends Type
+  case object TyNat extends Type
 
   sealed trait Term 
   case class TmTrue (info : FileInfo) extends Term
   case class TmFalse (info : FileInfo) extends Term
   case class TmIf (info : FileInfo, cond : Term, choiceTrue : Term, choiceFalse : Term) extends Term
-  case class CaseChoice(c1 : String, namedPair : (String, Tipe))
+  case class CaseChoice(c1 : String, namedPair : (String, Term))
   //TODO: Understand these case classes from the text.
   case class TmCase(info : FileInfo, cTerm : Term, choices : List[CaseChoice]) extends Term
-  case class TmTag (info : FileInfo, tag : String, tmTerm : Term, tipe : Tipe) extends Term 
+  case class TmTag (info : FileInfo, tag : String, tmTerm : Term, Type : Type) extends Term 
   case class TmVar (info : FileInfo, index1 : Int, index2 : Int) extends Term
-  case class TmAbs (info : FileInfo, aString : String, aType : Tipe, term : Term) extends Term
+  case class TmAbs (info : FileInfo, aString : String, aType : Type, term : Term) extends Term
   case class TmApp (info : FileInfo, lTerm : Term, args : Term) extends Term 
   case class TmLet (info : FileInfo, astring : String, term1 : Term, term2 : Term) extends Term 
   case class TmFix (info : FileInfo, term : Term) extends Term 
   case class TmString (info : FileInfo, aString : String) extends Term 
   case class TmUnit (info : FileInfo) extends Term 
-  case class TmAscribe (info : FileInfo, term : Term , tipe : Tipe) extends Term 
+  case class TmAscribe (info : FileInfo, term : Term , Type : Type) extends Term 
   case class TmRecord (info : FileInfo, fields : List[(String, Term)]) extends Term 
   case class TmProj (info : FileInfo, term : Term, proj : String) extends Term 
   case class TmFloat (info : FileInfo, aValue : Float) extends Term 
@@ -49,7 +49,7 @@ object Syntax {
   case class TmSucc (info : FileInfo, term : Term) extends Term 
   case class TmPred (info : FileInfo, term : Term) extends Term 
   case class TmIsZero (info : FileInfo, term : Term) extends Term 
-  case class TmInert (info : FileInfo, tipe : Tipe) extends Term 
+  case class TmInert (info : FileInfo, Type : Type) extends Term 
 } 
 
 object Binding {
@@ -57,9 +57,9 @@ object Binding {
   sealed trait Binding
   case object NameBinding extends Binding 
   case object TyVarBinding extends Binding 
-  case class VarBinding(tipe : Tipe) extends Binding 
-  case class TmAbbBind (term : Term, tipe : Option[Tipe]) extends Binding 
-  case class TyAbbBind (tipe : Tipe) extends Binding
+  case class VarBinding(Type : Type) extends Binding 
+  case class TmAbbBind (term : Term, Type : Option[Type]) extends Binding 
+  case class TyAbbBind (Type : Type) extends Binding
 }
 
 object Error {
@@ -115,8 +115,8 @@ object Context {
     //lambda terms based on de-Breujin indices.
     //Walk the type map, here it seems to be a simple 
     //walk with no shifting of types.
-    def tymap (onvar : (Int, Int, Int) => Tipe , cutoff : Int, typeT : Tipe) = {
-      def walk(cutoff : Int , typeT : Tipe) : Tipe = {
+    def tymap (onvar : (Int, Int, Int) => Type , cutoff : Int, typeT : Type) = {
+      def walk(cutoff : Int , typeT : Type) : Type = {
         typeT match {
           // case (TyVar(x, n)) => ???//what is the type of onvar
           case (tyT@(TyId(b))) => tyT 
@@ -139,12 +139,12 @@ object Context {
     }
 
     def tmmap (onvar : ((FileInfo, Int, Int, Int) => Term), 
-                ontype : ((Int, Tipe) => Tipe),
+                ontype : ((Int, Type) => Type),
                 cutoff : Int, 
                 term : Term) = {
       def walk(cutoff : Int, term : Term) : Term = 
         term match {
-          case (TmInert(fi, tipe)) => TmInert(fi, ontype(cutoff, tipe))
+          case (TmInert(fi, aType)) => TmInert(fi, ontype(cutoff, aType))
           case (TmVar(fi, x, n)) => onvar(fi, cutoff, x, n)
           case (TmAbs(fi, x, tyT1, t2)) => 
               TmAbs(fi, x, ontype(cutoff, tyT1), 
@@ -160,6 +160,32 @@ object Context {
               TmIf(fi, walk(cutoff, t1), walk(cutoff, t2), walk(cutoff, t3))
           case (t@TmString(fi, aString)) => t
           case (t@TmUnit(fi)) => t 
+          case (t@TmProj(fi, t1, l)) => 
+                TmProj(fi, walk(cutoff, t1), l)
+          case (t@TmRecord(fi, fields)) => 
+              TmRecord(fi, fields.map(f => (f._1, walk(cutoff, f._2))))
+          case (t@TmAscribe(fi, t1, tyT1)) => 
+              TmAscribe (fi, walk(cutoff, t1), ontype(cutoff, tyT1))
+          case (t@TmFloat(fi, f)) => t 
+          case (t@TmTimesFloat(fi, t1, t2)) => 
+              TmTimesFloat(fi, walk(cutoff, t1), walk(cutoff, t2))
+          case (t@TmZero(fi)) => TmZero(fi)
+          case (t@TmSucc(fi, t1)) => TmSucc(fi, walk(cutoff, t1))
+          case (t@TmPred(fi, t1)) => TmPred(fi, walk(cutoff, t1)) 
+          case (t@TmIsZero(fi, t1)) => TmIsZero(fi, walk(cutoff, t1))
+          case (t@TmTag(fi, l, t1, tyT)) =>
+              TmTag(fi, l, walk(cutoff, t1), ontype(cutoff, tyT))
+          case (t12@TmCase(fi, t, cases)) => 
+              TmCase(fi
+                  , walk(cutoff, t)
+                  , cases.map
+                      (a => 
+                        CaseChoice(a.c1, 
+                          (a.namedPair._1, 
+                            walk(cutoff + 1 , a.namedPair._2)))))
+
+
+
 
 
 
