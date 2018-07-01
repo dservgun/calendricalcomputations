@@ -44,4 +44,6 @@ object Syntax {
   case class TmPred (info : FileInfo, term : Term) extends Term 
   case class TmIsZero (info : FileInfo, term : Term) extends Term 
   case class TmInert (info : FileInfo, Type : Type) extends Term 
+
+  def extractFileInfo (aTerm : Term) : FileInfo = ???
 } 
