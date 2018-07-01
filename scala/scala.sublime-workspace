@@ -1,0 +1,736 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "build.sbt",
+			"settings":
+			{
+				"buffer_size": 475,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Haskell/Haskell.sublime-build",
+					""
+				],
+				[
+					"Packages/SublimeHaskell/SublimeHaskell.sublime-build",
+					""
+				],
+				[
+					"Packages/SublimeHaskell/SublimeHaskell.sublime-build",
+					"Clean"
+				],
+				[
+					"Packages/SublimeHaskell/SublimeHaskell.sublime-build",
+					"Configure"
+				],
+				[
+					"Packages/SublimeHaskell/SublimeHaskell.sublime-build",
+					"Rebuild"
+				],
+				[
+					"Packages/SublimeHaskell/SublimeHaskell.sublime-build",
+					"Install"
+				],
+				[
+					"Packages/SublimeHaskell/SublimeHaskell.sublime-build",
+					"Test"
+				]
+			],
+			[
+				"Packages/SublimeHaskell/SublimeHaskell.sublime-build",
+				"Rebuild"
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "package",
+		"selected_items":
+		[
+			[
+				"package",
+				"Package Control: Install Package"
+			],
+			[
+				"pa",
+				"Package Control: Discover Packages"
+			],
+			[
+				"Install",
+				"Package Control: Install Package"
+			],
+			[
+				"Ctags",
+				"Code Folding: Fold Tag Attributes"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Discover Packages"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"haskell",
+				"Set Syntax: Haskell"
+			]
+		],
+		"width": 497.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/dinkarganti/calendricalcomputations/scala",
+		"/home/dinkarganti/calendricalcomputations/scala/src",
+		"/home/dinkarganti/calendricalcomputations/scala/src/main",
+		"/home/dinkarganti/calendricalcomputations/scala/src/main/scala",
+		"/home/dinkarganti/calendricalcomputations/scala/src/main/scala/util"
+	],
+	"file_history":
+	[
+		"/home/dinkarganti/calendricalcomputations/scala/src/main/scala/util/Actor.scala",
+		"/home/dinkarganti/calendricalcomputations/scala/src/main/scala/util/Structures.scala",
+		"/home/dinkarganti/fpinscala/answers/src/main/scala/fpinscala/parallelism/Par.scala",
+		"/home/dinkarganti/calendricalcomputations/scala/src/main/scala/util/SimpleCache.scala",
+		"/home/dinkarganti/calendricalcomputations/scala/src/test/scala/calendar/GregorianCalendarSpec.scala",
+		"/home/dinkarganti/calendricalcomputations/scala/src/test/scala/util/SimpleCacheTest.scala",
+		"/home/dinkarganti/calendricalcomputations/scala/src/test/scala/util/StructuresTest.scala",
+		"/home/dinkarganti/calendricalcomputations/scala/build.sbt",
+		"/home/dinkarganti/bitcoin/src/httpserver.cpp",
+		"/home/dinkarganti/zya/src/Data/Zya/Ethereum/Sockets/Client.hs",
+		"/home/dinkarganti/zya/src/Data/Zya/Utils/IPC.hs",
+		"/home/dinkarganti/zya/zya.cabal",
+		"/home/dinkarganti/zya/src/Data/Zya/Ethereum/CLI.hs",
+		"/home/dinkarganti/zya/src/Data/Zya/Bitcoin/Client.hs",
+		"/home/dinkarganti/zya/ethClient/EtherClient.hs",
+		"/home/dinkarganti/zya/src/Data/Zya/Ethereum/Internal/Types/Common.hs",
+		"/home/dinkarganti/zya/src/Data/Zya/Ethereum/Internal/Types/RPCRequest.hs",
+		"/home/dinkarganti/zya/src/Data/Zya/Utils/JsonRPC.hs",
+		"/home/dinkarganti/zya/src/Data/Zya/Ethereum/Internal/Types/Transaction.hs",
+		"/home/dinkarganti/zya/testcommands.txt",
+		"/home/dinkarganti/loyakk/Notes.md",
+		"/home/dinkarganti/libtorrent-rasterbar-1.0.5/include/libtorrent/disk_buffer_holder.hpp",
+		"/home/dinkarganti/libtorrent-rasterbar-1.0.5/include/libtorrent/session.hpp",
+		"/home/dinkarganti/go-ethereum/README.md",
+		"/home/dinkarganti/libtorrent-rasterbar-1.0.5/bindings/python/src/entry.cpp",
+		"/home/dinkarganti/zya/src/Data/Zya/Utils/Logger.hs",
+		"/home/dinkarganti/cardano-sl/infra/Pos/Subscription/Common.hs",
+		"/home/dinkarganti/zya/trace.out",
+		"/home/dinkarganti/zya/transaction.log.2",
+		"/home/dinkarganti/zya/debug.log",
+		"/home/dinkarganti/zya/src/Data/Zya/Ethereum/Internal/Types/RPCResponse.hs",
+		"/home/dinkarganti/zya/info.log",
+		"/home/dinkarganti/zya/hsclient/Data/Zya/Client/SimpleClient.hs",
+		"/home/dinkarganti/zya/hsclient/ReferenceClient.hs",
+		"/home/dinkarganti/zya/src/Main.hs",
+		"/home/dinkarganti/zya/test/TraversableTest.hs",
+		"/home/dinkarganti/zya/EthereumNode.md",
+		"/home/dinkarganti/zya/test/ArrowsTutorial.hs",
+		"/home/dinkarganti/plutus-prototype/src/Plutus/Parser.hs",
+		"/home/dinkarganti/zya/src/Data/Zya/Utils/Validation.hs",
+		"/home/dinkarganti/zya/src/Data/Zya/Core/ComputeNodeService.hs",
+		"/home/dinkarganti/zya/src/Data/Zya/Core/LocalMessageHandlingStrategy.hs",
+		"/home/dinkarganti/zya/src/Data/Zya/Core/QueryService.hs",
+		"/home/dinkarganti/zya/src/Data/Zya/Kafka/Client.hs",
+		"/home/dinkarganti/zya/test/BinaryTrees.hs",
+		"/home/dinkarganti/tmp/elite/t.txt",
+		"/home/dinkarganti/zya/src/Data/Zya/Kafka/Util.hs",
+		"/home/dinkarganti/kafka-python/kafka/protocol/metadata.py",
+		"/home/dinkarganti/kafka/clients/src/main/java/org/apache/kafka/common/record/RecordBatch.java",
+		"/home/dinkarganti/kafka/core/src/main/scala/kafka/api/ApiVersion.scala",
+		"/home/dinkarganti/kafka-python/kafka/protocol/types.py",
+		"/home/dinkarganti/kafka/clients/src/main/java/org/apache/kafka/clients/consumer/internals/Heartbeat.java",
+		"/home/dinkarganti/kafka/clients/src/main/java/org/apache/kafka/clients/consumer/KafkaConsumer.java",
+		"/home/dinkarganti/kafka/clients/src/main/java/org/apache/kafka/common/network/NetworkReceive.java",
+		"/home/dinkarganti/kafka/clients/src/main/java/org/apache/kafka/common/network/NetworkSend.java",
+		"/home/dinkarganti/kafka/clients/src/main/java/org/apache/kafka/common/network/Receive.java",
+		"/home/dinkarganti/kafka/core/src/main/scala/kafka/server/KafkaApis.scala",
+		"/home/dinkarganti/kafka/core/src/main/scala/kafka/network/RequestChannel.scala",
+		"/home/dinkarganti/go-ethereum/console/bridge.go",
+		"/home/dinkarganti/go-ethereum/common/compiler/solidity_test.go",
+		"/home/dinkarganti/go-ethereum/eth/filters/api.go",
+		"/home/dinkarganti/go-ethereum/rpc/websocket.go",
+		"/home/dinkarganti/loyakk/src/SimpleTestCase.sol",
+		"/home/dinkarganti/loyakk/src/Loyakk.sol",
+		"/home/dinkarganti/go-ethereum/contracts/ens/contract/ens.sol",
+		"/home/dinkarganti/zya/Readme.md",
+		"/home/dinkarganti/zya/cabal.config",
+		"/home/dinkarganti/zya/cabal.sandbox.config",
+		"/home/dinkarganti/zya/Roadmap.md",
+		"/home/dinkarganti/loyakk/src/LoyakkData.sol",
+		"/home/dinkarganti/go-ethereum/miner/remote_agent.go",
+		"/home/dinkarganti/zya/src/Data/Zya/Ethereum/Sockets/RPCResponse.hs",
+		"/home/dinkarganti/zya/src/Data/Zya/Ethereum/Sockets/RPCRequest.hs",
+		"/home/dinkarganti/go-ethereum/vendor/golang.org/x/sys/unix/sockcmsg_unix.go",
+		"/home/dinkarganti/zya/test/FunctorTest.hs",
+		"/home/dinkarganti/zya/test/BinomialHeap.hs",
+		"/home/dinkarganti/zya/src/Data/Zya/Parsers/ServiceDescription.hs",
+		"/home/dinkarganti/zya/src/Data/Zya/Core/Writer.hs",
+		"/home/dinkarganti/zya/src/Data/Zya/Core/Service.hs",
+		"/home/dinkarganti/zya/test/Somefunctions.hs",
+		"/home/dinkarganti/zya/src/Data/Zya/Core/Internal/LocalMessage.hs",
+		"/home/dinkarganti/cover_guardx.txt",
+		"/home/dinkarganti/cover.txt",
+		"/home/d",
+		"/home/dinkarganti/zya/src/Parsers/ServiceDescription.hs",
+		"/home/dinkarganti/zya/src/Data/Zya/Core/Internal/MessageDistribution.hs",
+		"/home/dinkarganti/zya/src/Data/Zya/Core/TestWriter.hs",
+		"/home/dinkarganti/zya/src/Data/Zya/Persistence/Internal/Sqlite.hs",
+		"/home/dinkarganti/zya/out",
+		"/home/dinkarganti/zya/src/Data/Zya/Core/Internal/ServerTypes.hs",
+		"/home/dinkarganti/zya/src/Data/Zya/Persistence/Internal/FileSystem.hs",
+		"/home/dinkarganti/zya/hlint.out",
+		"/home/dinkarganti/zya/src/Data/Zya/Utils/DistribUtils.hs",
+		"/home/dinkarganti/zya/src/Data/Zya/Persistence/Internal/Postgres.hs",
+		"/home/dinkarganti/zya/src/Data/Zya/Core/Internal/WebserviceProtocolHandler.hs",
+		"/home/dinkarganti/zya/src/Data/Zya/Core/WebServerService.hs",
+		"/home/dinkarganti/zya/src/Data/Zya/Core/Subscription.hs",
+		"/home/dinkarganti/zya/test/Tasty.hs",
+		"/home/dinkarganti/zya/src/Data/Zya/Core/TopicAllocator.hs",
+		"/home/dinkarganti/zya/src/Data/Zya/Core/ServiceTypes.hs",
+		"/home/dinkarganti/zya/Hints.md",
+		"/home/dinkarganti/zya/Setup.hs",
+		"/home/dinkarganti/zya/lint.out",
+		"/home/dinkarganti/zya/l.out",
+		"/home/dinkarganti/zya/tags"
+	],
+	"find":
+	{
+		"height": 41.0
+	},
+	"find_in_files":
+	{
+		"height": 144.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"folders":
+	[
+		{
+			"path": "/home/dinkarganti/calendricalcomputations/scala"
+		}
+	],
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "build.sbt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 475,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								163,
+								163
+							]
+						],
+						"settings":
+						{
+							"markdonw_live_preview_last_run": 1529730732.95,
+							"syntax": "Packages/Scala/Scala.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 41.0
+	},
+	"input":
+	{
+		"height": 41.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.sublime_haskell_build_log_panel":
+	{
+		"height": 408.0
+	},
+	"output.sublime_haskell_output_panel":
+	{
+		"height": 413.0
+	},
+	"pinned_build_system": "",
+	"project": "",
+	"replace":
+	{
+		"height": 99.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"gre",
+				"scala/src/test/scala/calendar/GregorianCalendarSpec.scala"
+			],
+			[
+				"zya.cabal",
+				"zya/zya.cabal"
+			],
+			[
+				"common.hs",
+				"zya/src/Data/Zya/Ethereum/Internal/Types/Common.hs"
+			],
+			[
+				"transaction.hs",
+				"zya/src/Data/Zya/Ethereum/Internal/Types/Transaction.hs"
+			],
+			[
+				"notes.md",
+				"loyakk/Notes.md"
+			],
+			[
+				"rpcrequest",
+				"zya/src/Data/Zya/Ethereum/Internal/Types/RPCRequest.hs"
+			],
+			[
+				"etherclient.hs",
+				"zya/ethClient/EtherClient.hs"
+			],
+			[
+				"client.hs",
+				"zya/src/Data/Zya/Ethereum/Sockets/Client.hs"
+			],
+			[
+				"etherclie",
+				"zya/ethClient/EtherClient.hs"
+			],
+			[
+				"ethercl",
+				"zya/ethClient/EtherClient.hs"
+			],
+			[
+				"session.hpp",
+				"libtorrent-rasterbar-1.0.5/include/libtorrent/session.hpp"
+			],
+			[
+				"notes",
+				"loyakk/Notes.md"
+			],
+			[
+				"transaction.log.2",
+				"zya/transaction.log.2"
+			],
+			[
+				"logger.hs",
+				"zya/src/Data/Zya/Utils/Logger.hs"
+			],
+			[
+				"trace.out",
+				"zya/trace.out"
+			],
+			[
+				"debug.log",
+				"zya/debug.log"
+			],
+			[
+				"etherc",
+				"zya/ethClient/EtherClient.hs"
+			],
+			[
+				"rpcresponse.hs",
+				"zya/src/Data/Zya/Ethereum/Internal/Types/RPCResponse.hs"
+			],
+			[
+				"main.hs",
+				"zya/src/Main.hs"
+			],
+			[
+				"refere",
+				"zya/hsclient/ReferenceClient.hs"
+			],
+			[
+				"simpleclient.hs",
+				"zya/hsclient/Data/Zya/Client/SimpleClient.hs"
+			],
+			[
+				"rpcrequest.hs",
+				"zya/src/Data/Zya/Ethereum/Internal/Types/RPCRequest.hs"
+			],
+			[
+				"rpcresponse",
+				"zya/src/Data/Zya/Ethereum/Internal/Types/RPCResponse.hs"
+			],
+			[
+				"response.hs",
+				"zya/src/Data/Zya/Ethereum/Internal/Types/RPCResponse.hs"
+			],
+			[
+				"ether",
+				"zya/EthereumNode.md"
+			],
+			[
+				"rpc",
+				"zya/src/Data/Zya/Ethereum/Internal/Types/RPCRequest.hs"
+			],
+			[
+				"rocks.hs",
+				"cardano-sl/db/Pos/DB/Rocks.hs"
+			],
+			[
+				"rpcreq",
+				"zya/src/Data/Zya/Ethereum/Internal/Types/RPCRequest.hs"
+			],
+			[
+				"util.hs",
+				"zya/src/Data/Zya/Kafka/Util.hs"
+			],
+			[
+				"types.py",
+				"kafka-python/kafka/protocol/types.py"
+			],
+			[
+				"recordbatch",
+				"kafka/clients/src/main/java/org/apache/kafka/common/record/RecordBatch.java"
+			],
+			[
+				"apiversion",
+				"kafka/core/src/main/scala/kafka/api/ApiVersion.scala"
+			],
+			[
+				"requestchannel.scala",
+				"kafka/core/src/main/scala/kafka/network/RequestChannel.scala"
+			],
+			[
+				"read",
+				"zya/Readme.md"
+			],
+			[
+				"cabal.config",
+				"zya/cabal.sandbox.config"
+			],
+			[
+				"rea",
+				"go-ethereum/miner/remote_agent.go"
+			],
+			[
+				"out",
+				"out"
+			],
+			[
+				"webserverser",
+				"src/Data/Zya/Core/WebServerService.hs"
+			],
+			[
+				"zya.ca",
+				"zya.cabal"
+			],
+			[
+				"webserviceprotoc",
+				"src/Data/Zya/Core/Internal/WebserviceProtocolHandler.hs"
+			],
+			[
+				"simple",
+				"hsclient/Data/Zya/Client/SimpleClient.hs"
+			],
+			[
+				"logging.hs",
+				"Constellation/Util/Logging.hs"
+			],
+			[
+				"webser",
+				"src/Data/Zya/Core/WebServerService.hs"
+			],
+			[
+				"webserviceprot",
+				"src/Data/Zya/Core/Internal/WebserviceProtocolHandler.hs"
+			],
+			[
+				"localmessage",
+				"src/Data/Zya/Core/Internal/LocalMessage.hs"
+			],
+			[
+				"localmess",
+				"src/Data/Zya/Core/Internal/LocalMessage.hs"
+			],
+			[
+				"ser",
+				"src/Data/Zya/Core/Service.hs"
+			],
+			[
+				"main",
+				"src/Main.hs"
+			],
+			[
+				"",
+				"zya.cabal"
+			],
+			[
+				"localmessage.hs",
+				"src/Data/Zya/Core/Internal/LocalMessage.hs"
+			],
+			[
+				"m",
+				"src/Main.hs"
+			],
+			[
+				"servertype",
+				"src/Data/Zya/Core/Internal/ServerTypes.hs"
+			],
+			[
+				"localmessagehand",
+				"src/Data/Zya/Core/LocalMessageHandlingStrategy.hs"
+			],
+			[
+				"testwriter.hs",
+				"src/Data/Zya/Core/TestWriter.hs"
+			],
+			[
+				"sqlite",
+				"src/Data/Zya/Persistence/Internal/Sqlite.hs"
+			],
+			[
+				"servertypes",
+				"src/Data/Zya/Core/Internal/ServerTypes.hs"
+			],
+			[
+				"messagedistribution.hs",
+				"src/Data/Zya/Core/Internal/MessageDistribution.hs"
+			],
+			[
+				"filesystem.hs",
+				"src/Data/Zya/Persistence/Internal/FileSystem.hs"
+			],
+			[
+				"sql",
+				"src/Data/Zya/Persistence/Internal/Sqlite.hs"
+			],
+			[
+				"servertypes.hs",
+				"src/Data/Zya/Core/Internal/ServerTypes.hs"
+			],
+			[
+				"binomi",
+				"test/BinomialHeap.hs"
+			],
+			[
+				"distribut",
+				"src/Data/Zya/Utils/DistribUtils.hs"
+			],
+			[
+				"sqlite.hs",
+				"src/Data/Zya/Persistence/Internal/Sqlite.hs"
+			],
+			[
+				"postgres.hs",
+				"src/Data/Zya/Persistence/Internal/Postgres.hs"
+			],
+			[
+				"hlint.out",
+				"hlint.out"
+			],
+			[
+				"webservicepr",
+				"src/Data/Zya/Core/Internal/WebserviceProtocolHandler.hs"
+			],
+			[
+				"localmes",
+				"src/Data/Zya/Core/Internal/LocalMessage.hs"
+			],
+			[
+				"writer.hs",
+				"src/Data/Zya/Core/Writer.hs"
+			],
+			[
+				"webserver",
+				"src/Data/Zya/Core/WebServerService.hs"
+			],
+			[
+				"tasty.hs",
+				"test/Tasty.hs"
+			],
+			[
+				"subscr",
+				"src/Data/Zya/Core/Subscription.hs"
+			],
+			[
+				"service.hs",
+				"src/Data/Zya/Core/Service.hs"
+			],
+			[
+				"topicallocator.hs",
+				"src/Data/Zya/Core/TopicAllocator.hs"
+			],
+			[
+				"testwriter",
+				"src/Data/Zya/Core/TestWriter.hs"
+			],
+			[
+				"subsc",
+				"src/Data/Zya/Core/Subscription.hs"
+			],
+			[
+				"servicetypes",
+				"src/Data/Zya/Core/ServiceTypes.hs"
+			],
+			[
+				"localmessa",
+				"src/Data/Zya/Core/LocalMessageHandlingStrategy.hs"
+			],
+			[
+				"queryservice",
+				"src/Data/Zya/Core/QueryService.hs"
+			],
+			[
+				"localmessageha",
+				"src/Data/Zya/Core/LocalMessageHandlingStrategy.hs"
+			],
+			[
+				"compute",
+				"src/Data/Zya/Core/ComputeNodeService.hs"
+			],
+			[
+				"computenode",
+				"src/Data/Zya/Core/ComputeNodeService.hs"
+			],
+			[
+				"l.out",
+				"l.out"
+			],
+			[
+				"lint.out",
+				"lint.out"
+			],
+			[
+				"set",
+				"Setup.hs"
+			],
+			[
+				"webservicepro",
+				"src/Data/Zya/Core/Internal/WebserviceProtocolHandler.hs"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 396.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
