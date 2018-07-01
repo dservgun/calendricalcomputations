@@ -115,7 +115,7 @@ object Context {
     //lambda terms based on de-Breujin indices.
     //Walk the type map, here it seems to be a simple 
     //walk with no shifting of types.
-    def tymap (onvar : (Int, Int, Int) => Type , cutoff : Int, typeT : Type) = {
+    def tymap (onvar : Int => Int => Int => Type) (cutoff : Int) (typeT : Type) = {
       def walk(cutoff : Int , typeT : Type) : Type = {
         typeT match {
           // case (TyVar(x, n)) => ???//what is the type of onvar
@@ -132,22 +132,22 @@ object Context {
                       walk(cutoff, typePair._2)))
           case TyVariant(fieldTypes) => 
               TyVariant (fieldTypes.map((ele) => (ele._1, walk(cutoff, ele._2))))
-          case TyVar(x, n) => onvar(cutoff, x, n)
+          case TyVar(x, n) => onvar (cutoff) (x) (n)
         }
       }
       walk(cutoff, typeT)
     }
 
-    def tmmap (onvar : ((FileInfo, Int, Int, Int) => Term), 
-                ontype : ((Int, Type) => Type),
-                cutoff : Int, 
-                term : Term) = {
+    def tmmap (onvar : FileInfo => Int => Int => Int => Term)
+                (ontype : Int => Type => Type)
+                (cutoff : Int)
+                (term : Term) = {
       def walk(cutoff : Int, term : Term) : Term = 
         term match {
-          case (TmInert(fi, aType)) => TmInert(fi, ontype(cutoff, aType))
-          case (TmVar(fi, x, n)) => onvar(fi, cutoff, x, n)
+          case (TmInert(fi, aType)) => TmInert(fi, ontype(cutoff)(aType))
+          case (TmVar(fi, x, n)) => onvar(fi)(cutoff)(x)(n)
           case (TmAbs(fi, x, tyT1, t2)) => 
-              TmAbs(fi, x, ontype(cutoff, tyT1), 
+              TmAbs(fi, x, ontype(cutoff)(tyT1), 
                       walk(cutoff + 1, t2))
           case (TmApp(fi, t1, t2)) => 
               TmApp (fi, walk(cutoff, t1), walk(cutoff, t2))
@@ -165,7 +165,7 @@ object Context {
           case (t@TmRecord(fi, fields)) => 
               TmRecord(fi, fields.map(f => (f._1, walk(cutoff, f._2))))
           case (t@TmAscribe(fi, t1, tyT1)) => 
-              TmAscribe (fi, walk(cutoff, t1), ontype(cutoff, tyT1))
+              TmAscribe (fi, walk(cutoff, t1), ontype(cutoff)(tyT1))
           case (t@TmFloat(fi, f)) => t 
           case (t@TmTimesFloat(fi, t1, t2)) => 
               TmTimesFloat(fi, walk(cutoff, t1), walk(cutoff, t2))
@@ -174,7 +174,7 @@ object Context {
           case (t@TmPred(fi, t1)) => TmPred(fi, walk(cutoff, t1)) 
           case (t@TmIsZero(fi, t1)) => TmIsZero(fi, walk(cutoff, t1))
           case (t@TmTag(fi, l, t1, tyT)) =>
-              TmTag(fi, l, walk(cutoff, t1), ontype(cutoff, tyT))
+              TmTag(fi, l, walk(cutoff, t1), ontype(cutoff)(tyT))
           case (t12@TmCase(fi, t, cases)) => 
               TmCase(fi
                   , walk(cutoff, t)
@@ -183,15 +183,38 @@ object Context {
                         CaseChoice(a.c1, 
                           (a.namedPair._1, 
                             walk(cutoff + 1 , a.namedPair._2)))))
-
-
-
-
-
-
-
         }
-    }    
+    }
+
+    def typeShiftAbove (d : Int) (cutoff : Int) (tipe : Type) = {
+      def anony (cut : Int) (x : Int) (n : Int) = {
+        if (x >= cut) TyVar (x + d, n + d) 
+        else TyVar(x, n + d)
+      }
+      tymap (anony) (cutoff) (tipe)
+    }
+
+    def termShiftAbove (d : Int) (cutoff : Int) (term : Term) = {
+      def anony (fileInfo : FileInfo) (cut : Int) (x : Int) (n : Int) = {
+        if (x >= cut) TmVar(fileInfo, x + d, n + d) 
+        else TmVar (fileInfo, x, n + d)
+      }
+      tmmap (anony) (typeShiftAbove (d))(cutoff)(term)
+    }
+    def termShift (d : Int)(term :Term) = termShiftAbove (d) (0) (term)
+    def typeShift (d : Int) (tipe : Type) = typeShiftAbove (d) (0) (tipe)
+    def bindingShift (d : Int) (binding : Binding) = 
+      binding match {
+        case NameBinding => NameBinding 
+        case TyVarBinding => TyVarBinding
+        case TmAbbBind (t, tytOpt) => 
+            val tyt_1 = tytOpt match {
+              case None => None 
+              case (Some(tyT)) => Some(typeShift (d) (tyT))
+            }
+        case VarBinding(tyT) => VarBinding(typeShift (d) (tyT)) 
+        case TyAbbBind(tyT) => TyAbbBind(typeShift (d) (tyT))
+      }
   }
 
   sealed trait Command 
