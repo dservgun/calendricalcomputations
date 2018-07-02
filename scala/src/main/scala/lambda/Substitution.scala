@@ -19,7 +19,7 @@ object Substitution {
     tmmap (anony1) (anony2) (j) (s)
   }
 
-  def termSubstTop (s : Term) (t : Type) = 
+  def termSubstTop (s : Term) (t : Type) : Term = 
     termShift (-1) (termSubst (0) (termShift (1) (s)) (t))
 
 /*let typeSubst tyS j tyT =
