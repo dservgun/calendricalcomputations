@@ -6,7 +6,7 @@ import Context._
 
 object Substitution {
 
-  def termSubst (j : Int) (s : Term) (tyT : Type) : Term = {
+  def termSubst (j : Int) (s : Term) (tyT : Term) : Term = {
     def anony1 (fileInfo : FileInfo) (j : Int) (x : Int) (n : Int) : Term = {
       if (x == j) {
         termShift (j) (s) 
@@ -19,7 +19,7 @@ object Substitution {
     tmmap (anony1) (anony2) (j) (s)
   }
 
-  def termSubstTop (s : Term) (t : Type) : Term = 
+  def termSubstTop (s : Term) (t : Term) : Term = 
     termShift (-1) (termSubst (0) (termShift (1) (s)) (t))
 
 /*let typeSubst tyS j tyT =

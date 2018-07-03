@@ -4,47 +4,7 @@ import Syntax._
 import Support._
 import Binding._
 import Error._
-/*
-type context = (string * binding) list
 
-type command =
-  | Eval of info * term
-  | Bind of info * string * binding
-
-(* ---------------------------------------------------------------------- *)
-
-let addbinding ctx x bind = (x,bind)::ctx
-
-let addname ctx x = addbinding ctx x NameBind
-
-let rec isnamebound ctx x =
-  match ctx with
-      [] -> false
-    | (y,_)::rest ->
-        if y=x then true
-        else isnamebound rest x
-
-let rec pickfreshname ctx x =
-  if isnamebound ctx x then pickfreshname ctx (x^"'")
-  else ((x,NameBind)::ctx), x
-
-let index2name fi ctx x =
-  try
-    let (xn,_) = List.nth ctx x in
-    xn
-  with Failure _ ->
-    let msg =
-      Printf.sprintf "Variable lookup failure: offset: %d, ctx size: %d" in
-    error fi (msg x (List.length ctx))
-
-let rec name2index fi ctx x =
-  match ctx with
-      [] -> error fi ("Identifier " ^ x ^ " is unbound")
-    | (y,_)::rest ->
-        if y=x then 0
-        else 1 + (name2index fi rest x)
-
-*/
 object Context {
     type Context = List[(String, Binding)]
     val emptyContext : Context = List() 
@@ -196,4 +156,28 @@ object Context {
         case VarBinding(tyT) => VarBinding(typeShift (d) (tyT)) 
         case TyAbbBind(tyT) => TyAbbBind(typeShift (d) (tyT))
       }
+
+    def getBinding (fileInfo : FileInfo) (ctx : Context) (i : Int) = 
+      try {
+        val (x, bind) = ctx(i)
+        bindingShift (i + 1) (bind)
+      }catch {
+        case e : Exception => 
+          val size = ctx.size
+          error (fileInfo,  
+                  s"Variable lookup failure : offset : $i, ctx size : $size")
+      }
+
+/*
+let rec getbinding fi ctx i =
+  try
+    let (_,bind) = List.nth ctx i in
+    bindingshift (i+1) bind 
+  with Failure _ ->
+    let msg =
+      Printf.sprintf "Variable lookup failure: offset: %d, ctx size: %d" in
+    error fi (msg i (List.length ctx))
+
+*/  
+
 }
