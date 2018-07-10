@@ -46,4 +46,25 @@ object Syntax {
   case class TmInert (info : FileInfo, Type : Type) extends Term 
 
   def extractFileInfo (aTerm : Term) : FileInfo = ???
+  def associate (tag : String, fields : List[(String, Term)]) : Term = {
+    val result = 
+      fields.filter((a : (String, Term)) => tag == a._1)
+    if (result.length == 1) {
+      result.head._2
+    }else {
+      throw new NoRuleApplies
+    }
+
+  }
+  //Find the branch that corresponds to the tag.
+  //if a tag is not found, raise an error?
+  def associate(tag : String, branches : List[CaseChoice]) : (String, Term) = {
+    val result = branches.filter((a : CaseChoice) => tag == a.c1)
+    if (result.length == 1) {
+      result.head.namedPair
+    }else {
+      throw new NoRuleApplies()
+    }    
+  }
+
 } 

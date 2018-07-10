@@ -7,7 +7,6 @@ import Substitution._
 import Binding._
 
 object Evaluation {
-  class NoRuleApplies extends Exception 
   def isNumericVal (ctx : Context) (t : Term) : Boolean = 
     t match {
       case (TmZero(_)) => true 
@@ -21,34 +20,13 @@ object Evaluation {
       case (TmTag(_, l, t1, _)) => isVal (ctx)(t1)
       case TmString(_, _) => true 
       case TmUnit(_) => true 
-      case TmFloat (_, _) => true
+      case TmFloat (_, _) if (isNumericVal(ctx)(t)) => true
       case (TmAbs(_, _, _, _)) => true 
       case TmRecord(_, fields) => fields.forall(x => isVal(ctx)(x._2))
-      case TmZero(_) => isNumericVal (ctx) (t) 
-      case TmSucc(_, t1) => isNumericVal (ctx) (t1)
       case _ => false
     }
 
-  def associate (tag : String, fields : List[(String, Term)]) : Term = {
-    val result = 
-      fields.filter((a : (String, Term)) => tag == a._1)
-    if (result.length == 1) {
-      result.head._2
-    }else {
-      throw new NoRuleApplies
-    }
 
-  }
-  //Find the branch that corresponds to the tag.
-  //if a tag is not found, raise an error?
-  def associate(tag : String, branches : List[CaseChoice]) : (String, Term) = {
-    val result = branches.filter((a : CaseChoice) => tag == a.c1)
-    if (result.length == 1) {
-      result.head.namedPair
-    }else {
-      throw new NoRuleApplies()
-    }    
-  }
 
     
 

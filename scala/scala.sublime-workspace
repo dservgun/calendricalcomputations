@@ -3,21 +3,161 @@
 	{
 		"selected_items":
 		[
+			[
+				"_",
+				"_2"
+			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "build.sbt",
+			"file": "src/main/scala/lambda/Substitution.scala",
 			"settings":
 			{
-				"buffer_size": 475,
+				"buffer_size": 1372,
 				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/main/scala/lambda/Evaluation.scala",
+			"settings":
+			{
+				"buffer_size": 5657,
+				"encoding": "UTF-8",
+				"line_ending": "Unix",
+				"name": "package lambda"
+			}
+		},
+		{
+			"contents": "VX2457-mhd\nvx2457-mhd\n(>b2457\"mjh)\n",
+			"settings":
+			{
+				"buffer_size": 35,
+				"line_ending": "Unix",
+				"name": "VX2457-mhd"
+			}
+		},
+		{
+			"file": "/home/dinkarganti/test_haskell/Suffixes.hs",
+			"settings":
+			{
+				"buffer_size": 140,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "{-# LANGUAGE MultiParamTypeClasses #-}\n{-# LANGUAGE FlexibleInstances #-}\nmodule Set where \n\nclass Set s a where \n  empty :: s a \n  insert :: a -> s a -> s a \n  member :: a -> s a -> Bool \n\ndata UnbalancedSet a = E | T (UnbalancedSet a) a (UnbalancedSet a)\n\ninstance Ord a => Set UnbalancedSet a where \n  empty = E \n  member x E = False \n  member x (T a y b) = \n    if x < y then \n      member x a \n    else if x > y then \n      member x b \n    else True\n\n  insert x E = T E x E\n  insert x s@(T a y b) = \n    if x < y then       \n      T (insert x a) y b\n    else if x > y then \n      T a y (insert x b)\n    else \n      s\n",
+			"file": "/home/dinkarganti/test_haskell/OkasakiSet.hs",
+			"file_size": 621,
+			"file_write_time": 131751473686592343,
+			"settings":
+			{
+				"buffer_size": 622,
+				"encoding": "UTF-8",
+				"line_ending": "Unix",
+				"name": "module Set where"
+			}
+		},
+		{
+			"contents": "\n\nSearching 120 files for \"dummyinfo\"\n\n/home/dinkarganti/tpl_exercises/arith/core.ml:\n   31        TmSucc(fi, t1')\n   32    | TmPred(_,TmZero(_)) ->\n   33:       TmZero(dummyinfo)\n   34    | TmPred(_,TmSucc(_,nv1)) when (isnumericval nv1) ->\n   35        nv1\n   ..\n   38        TmPred(fi, t1')\n   39    | TmIsZero(_,TmZero(_)) ->\n   40:       TmTrue(dummyinfo)\n   41    | TmIsZero(_,TmSucc(_,nv1)) when (isnumericval nv1) ->\n   42:       TmFalse(dummyinfo)\n   43    | TmIsZero(fi,t1) ->\n   44        let t1' = eval1 t1 in\n\n/home/dinkarganti/tpl_exercises/arith/lexer.ml:\n   73  \n   74  and filename = ref \"\"\n   75: and startLex = ref dummyinfo\n   76  \n   77  let create inFile stream =\n\n/home/dinkarganti/tpl_exercises/arith/support.ml:\n    8  type 'a withinfo = {i: info; v: 'a}\n    9  \n   10: let dummyinfo = UNKNOWN\n   11  let createInfo f l c = FI(f, l, c)\n   12  \n\n/home/dinkarganti/tpl_exercises/bot/support.ml:\n    8  type 'a withinfo = {i: info; v: 'a}\n    9  \n   10: let dummyinfo = UNKNOWN\n   11  let createInfo f l c = FI(f, l, c)\n   12  \n\n/home/dinkarganti/tpl_exercises/equirec/support.ml:\n    8  type 'a withinfo = {i: info; v: 'a}\n    9  \n   10: let dummyinfo = UNKNOWN\n   11  let createInfo f l c = FI(f, l, c)\n   12  \n\n/home/dinkarganti/tpl_exercises/equirec/syntax.ml:\n  208    | TyVar(x,n) ->\n  209        if ctxlength ctx = n then\n  210:         pr (index2name dummyinfo ctx x)\n  211        else\n  212          pr (\"[bad index: \" ^ (string_of_int x) ^ \"/\" ^ (string_of_int n)\n\n/home/dinkarganti/tpl_exercises/fomega/core.ml:\n   79  let rec kindof ctx tyT = match tyT with\n   80      TyVar(i,_) ->\n   81:       let knK = getkind dummyinfo ctx i\n   82        in knK\n   83    | TyAll(tyX,knK1,tyT2) ->\n   84        let ctx' = addbinding ctx tyX (TyVarBind knK1) in\n   85:       if kindof ctx' tyT2 <> KnStar then error dummyinfo \"Kind * expected\";\n   86        KnStar\n   87    | TyAbs(tyX,knK1,tyT2) ->\n   ..\n   95            KnArr(knK11,knK12) ->\n   96              if (=) knK2 knK11 then knK12\n   97:             else error dummyinfo \"parameter kind mismatch\"\n   98:         | _ -> error dummyinfo \"arrow kind expected\")\n   99    | TyArr(tyT1,tyT2) ->\n  100:       if kindof ctx tyT1 <> KnStar then error dummyinfo \"star kind expected\";\n  101:       if kindof ctx tyT2 <> KnStar then error dummyinfo \"star kind expected\";\n  102        KnStar\n  103    | _ -> KnStar\n\n/home/dinkarganti/tpl_exercises/fomega/support.ml:\n    8  type 'a withinfo = {i: info; v: 'a}\n    9  \n   10: let dummyinfo = UNKNOWN\n   11  let createInfo f l c = FI(f, l, c)\n   12  \n\n/home/dinkarganti/tpl_exercises/fomega/syntax.ml:\n  258      TyVar(x,n) ->\n  259        if ctxlength ctx = n then\n  260:         pr (index2name dummyinfo ctx x)\n  261        else\n  262          pr (\"[bad index: \" ^ (string_of_int x) ^ \"/\" ^ (string_of_int n)\n\n/home/dinkarganti/tpl_exercises/fomsub/core.ml:\n   80  and kindof ctx tyT = match tyT with\n   81      TyVar(i,_) ->\n   82:       let knK = getkind dummyinfo ctx i\n   83        in knK\n   84    | TyAll(tyX,tyT1,tyT2) ->\n   85        let ctx' = addbinding ctx tyX (TyVarBind tyT1) in\n   86:       if kindof ctx' tyT2 <> KnStar then error dummyinfo \"Kind * expected\";\n   87        KnStar\n   88    | TyAbs(tyX,knK1,tyT2) ->\n   ..\n   96            KnArr(knK11,knK12) ->\n   97              if (=) knK2 knK11 then knK12\n   98:             else error dummyinfo \"parameter kind mismatch\"\n   99:         | _ -> error dummyinfo \"arrow kind expected\")\n  100    | TyArr(tyT1,tyT2) ->\n  101:       if kindof ctx tyT1 <> KnStar then error dummyinfo \"star kind expected\";\n  102:       if kindof ctx tyT2 <> KnStar then error dummyinfo \"star kind expected\";\n  103        KnStar\n  104    | _ -> KnStar\n  ...\n  113  let rec promote ctx t = match t with\n  114     TyVar(i,_) ->\n  115:      (match getbinding dummyinfo ctx i with\n  116           TyVarBind(tyT) -> tyT\n  117         | _ -> raise NoRuleApplies)\n\n/home/dinkarganti/tpl_exercises/fomsub/support.ml:\n    8  type 'a withinfo = {i: info; v: 'a}\n    9  \n   10: let dummyinfo = UNKNOWN\n   11  let createInfo f l c = FI(f, l, c)\n   12  \n\n/home/dinkarganti/tpl_exercises/fomsub/syntax.ml:\n  271    | TyVar(x,n) ->\n  272        if ctxlength ctx = n then\n  273:         pr (index2name dummyinfo ctx x)\n  274        else\n  275          pr (\"[bad index: \" ^ (string_of_int x) ^ \"/\" ^ (string_of_int n)\n\n/home/dinkarganti/tpl_exercises/fullequirec/core.ml:\n   79        TmSucc(fi, t1')\n   80    | TmPred(_,TmZero(_)) ->\n   81:       TmZero(dummyinfo)\n   82    | TmPred(_,TmSucc(_,nv1)) when (isnumericval ctx nv1) ->\n   83        nv1\n   ..\n   86        TmPred(fi, t1')\n   87    | TmIsZero(_,TmZero(_)) ->\n   88:       TmTrue(dummyinfo)\n   89    | TmIsZero(_,TmSucc(_,nv1)) when (isnumericval ctx nv1) ->\n   90:       TmFalse(dummyinfo)\n   91    | TmIsZero(fi,t1) ->\n   92        let t1' = eval1 ctx t1 in\n   ..\n  130  \n  131  let istyabb ctx i = \n  132:   match getbinding dummyinfo ctx i with\n  133      TyAbbBind(tyT) -> true\n  134    | _ -> false\n  135  \n  136  let gettyabb ctx i = \n  137:   match getbinding dummyinfo ctx i with\n  138      TyAbbBind(tyT) -> tyT\n  139    | _ -> raise NoRuleApplies\n\n/home/dinkarganti/tpl_exercises/fullequirec/support.ml:\n    8  type 'a withinfo = {i: info; v: 'a}\n    9  \n   10: let dummyinfo = UNKNOWN\n   11  let createInfo f l c = FI(f, l, c)\n   12  \n\n/home/dinkarganti/tpl_exercises/fullequirec/syntax.ml:\n  308    | TyVar(x,n) ->\n  309        if ctxlength ctx = n then\n  310:         pr (index2name dummyinfo ctx x)\n  311        else\n  312          pr (\"[bad index: \" ^ (string_of_int x) ^ \"/\" ^ (string_of_int n)\n\n/home/dinkarganti/tpl_exercises/fullerror/core.ml:\n   57  \n   58  let istyabb ctx i = \n   59:   match getbinding dummyinfo ctx i with\n   60      TyAbbBind(tyT) -> true\n   61    | _ -> false\n   62  \n   63  let gettyabb ctx i = \n   64:   match getbinding dummyinfo ctx i with\n   65      TyAbbBind(tyT) -> tyT\n   66    | _ -> raise NoRuleApplies\n\n/home/dinkarganti/tpl_exercises/fullerror/support.ml:\n    8  type 'a withinfo = {i: info; v: 'a}\n    9  \n   10: let dummyinfo = UNKNOWN\n   11  let createInfo f l c = FI(f, l, c)\n   12  \n\n/home/dinkarganti/tpl_exercises/fullerror/syntax.ml:\n  229      TyVar(x,n) ->\n  230        if ctxlength ctx = n then\n  231:         pr (index2name dummyinfo ctx x)\n  232        else\n  233          pr (\"[bad index: \" ^ (string_of_int x) ^ \"/\" ^ (string_of_int n)\n\n/home/dinkarganti/tpl_exercises/fullfomsub/core.ml:\n   93        TmSucc(fi, t1')\n   94    | TmPred(_,TmZero(_)) ->\n   95:       TmZero(dummyinfo)\n   96    | TmPred(_,TmSucc(_,nv1)) when (isnumericval ctx nv1) ->\n   97        nv1\n   ..\n  100        TmPred(fi, t1')\n  101    | TmIsZero(_,TmZero(_)) ->\n  102:       TmTrue(dummyinfo)\n  103    | TmIsZero(_,TmSucc(_,nv1)) when (isnumericval ctx nv1) ->\n  104:       TmFalse(dummyinfo)\n  105    | TmIsZero(fi,t1) ->\n  106        let t1' = eval1 ctx t1 in\n  ...\n  129  \n  130  let istyabb ctx i = \n  131:   match getbinding dummyinfo ctx i with\n  132      TyAbbBind(tyT,_) -> true\n  133    | _ -> false\n  134  \n  135  let gettyabb ctx i = \n  136:   match getbinding dummyinfo ctx i with\n  137      TyAbbBind(tyT,_) -> tyT\n  138    | _ -> raise NoRuleApplies\n  ...\n  208      TyRecord(fldtys) ->\n  209        List.iter (fun (l,tyS) ->\n  210:              if kindof ctx tyS<>KnStar then error dummyinfo \"Kind * expected\")\n  211          fldtys;\n  212        KnStar\n  213    | TyVar(i,_) ->\n  214:       let knK = getkind dummyinfo ctx i\n  215        in knK\n  216    | TyAll(tyX,tyT1,tyT2) ->\n  217        let ctx' = addbinding ctx tyX (TyVarBind tyT1) in\n  218:       if kindof ctx' tyT2 <> KnStar then error dummyinfo \"Kind * expected\";\n  219        KnStar\n  220    | TyAbs(tyX,knK1,tyT2) ->\n  ...\n  228            KnArr(knK11,knK12) ->\n  229              if (=) knK2 knK11 then knK12\n  230:             else error dummyinfo \"parameter kind mismatch\"\n  231:         | _ -> error dummyinfo \"arrow kind expected\")\n  232    | TySome(tyX,tyT1,tyT2) ->\n  233        let ctx' = addbinding ctx tyX (TyVarBind(tyT1)) in\n  234:       if kindof ctx' tyT2 <> KnStar then error dummyinfo \"Kind * expected\";\n  235        KnStar\n  236    | TyArr(tyT1,tyT2) ->\n  237:       if kindof ctx tyT1 <> KnStar then error dummyinfo \"star kind expected\";\n  238:       if kindof ctx tyT2 <> KnStar then error dummyinfo \"star kind expected\";\n  239        KnStar\n  240    | _ -> KnStar\n  ...\n  249  let rec promote ctx t = match t with\n  250     TyVar(i,_) ->\n  251:      (match getbinding dummyinfo ctx i with\n  252           TyVarBind(tyT) -> tyT\n  253         | _ -> raise NoRuleApplies)\n\n/home/dinkarganti/tpl_exercises/fullfomsub/support.ml:\n    8  type 'a withinfo = {i: info; v: 'a}\n    9  \n   10: let dummyinfo = UNKNOWN\n   11  let createInfo f l c = FI(f, l, c)\n   12  \n\n/home/dinkarganti/tpl_exercises/fullfomsub/syntax.ml:\n  359      TyVar(x,n) ->\n  360        if ctxlength ctx = n then\n  361:         pr (index2name dummyinfo ctx x)\n  362        else\n  363          pr (\"[bad index: \" ^ (string_of_int x) ^ \"/\" ^ (string_of_int n)\n\n/home/dinkarganti/tpl_exercises/fullfomsubref/core.ml:\n   38        (0, v'::rest) -> v::rest\n   39      | (n, v'::rest) -> v' :: (f (n-1,rest))\n   40:     | _ -> error dummyinfo \"updatestore: bad index\"\n   41    in\n   42      f (n,store)\n   ..\n  103        else\n  104          let (l,store') = extendstore store t1 in\n  105:         (TmLoc(dummyinfo,l), store')\n  106    | TmDeref(fi,t1) ->\n  107        if not (isval ctx t1) then\n  ...\n  119          in (TmAssign(fi,t1,t2'), store')\n  120        else (match t1 with\n  121:             TmLoc(_,l) -> (TmUnit(dummyinfo), updatestore store l t2)\n  122            | _ -> raise NoRuleApplies)\n  123    | TmError(fi) ->\n  ...\n  135        TmSucc(fi, t1'), store'\n  136    | TmPred(_,TmZero(_)) ->\n  137:       TmZero(dummyinfo), store\n  138    | TmPred(_,TmSucc(_,nv1)) when (isnumericval ctx nv1) ->\n  139        nv1, store\n  ...\n  142        TmPred(fi, t1'), store'\n  143    | TmIsZero(_,TmZero(_)) ->\n  144:       TmTrue(dummyinfo), store\n  145    | TmIsZero(_,TmSucc(_,nv1)) when (isnumericval ctx nv1) ->\n  146:       TmFalse(dummyinfo), store\n  147    | TmIsZero(fi,t1) ->\n  148        let t1',store' = eval1 ctx store t1 in\n  ...\n  179        in eval ctx store' t'\n  180    with NoRuleApplies -> t,store\n  181:      | ErrorEncountered -> TmError(dummyinfo),store\n  182  \n  183  (* ------------------------   KINDING  ------------------------ *)\n  184  \n  185  let istyabb ctx i = \n  186:   match getbinding dummyinfo ctx i with\n  187      TyAbbBind(tyT,_) -> true\n  188    | _ -> false\n  189  \n  190  let gettyabb ctx i = \n  191:   match getbinding dummyinfo ctx i with\n  192      TyAbbBind(tyT,_) -> tyT\n  193    | _ -> raise NoRuleApplies\n  ...\n  278      TyRecord(fldtys) ->\n  279        List.iter (fun (l,tyS) ->\n  280:              if kindof ctx tyS<>KnStar then error dummyinfo \"Kind * expected\")\n  281          fldtys;\n  282        KnStar\n  283    | TyVariant(fldtys) ->\n  284        List.iter (fun (l,tyS) ->\n  285:              if kindof ctx tyS<>KnStar then error dummyinfo \"Kind * expected\")\n  286          fldtys;\n  287        KnStar\n  288    | TyVar(i,_) ->\n  289:       let knK = getkind dummyinfo ctx i\n  290        in knK\n  291    | TyAll(tyX,tyT1,tyT2) ->\n  292        let ctx' = addbinding ctx tyX (TyVarBind tyT1) in\n  293:       if kindof ctx' tyT2 <> KnStar then error dummyinfo \"Kind * expected\";\n  294        KnStar\n  295    | TyAbs(tyX,knK1,tyT2) ->\n  ...\n  303            KnArr(knK11,knK12) ->\n  304              if (=) knK2 knK11 then knK12\n  305:             else error dummyinfo \"parameter kind mismatch\"\n  306:         | _ -> error dummyinfo \"arrow kind expected\")\n  307    | TySome(tyX,tyT1,tyT2) ->\n  308        let ctx' = addbinding ctx tyX (TyVarBind(tyT1)) in\n  309:       if kindof ctx' tyT2 <> KnStar then error dummyinfo \"Kind * expected\";\n  310        KnStar\n  311    | TyArr(tyT1,tyT2) ->\n  312:       if kindof ctx tyT1 <> KnStar then error dummyinfo \"star kind expected\";\n  313:       if kindof ctx tyT2 <> KnStar then error dummyinfo \"star kind expected\";\n  314        KnStar\n  315    | TyRef(tyT) -> \n  316:       if kindof ctx tyT <> KnStar then error dummyinfo \"star kind expected\";\n  317        KnStar\n  318    | TySource(tyT) -> \n  319:       if kindof ctx tyT <> KnStar then error dummyinfo \"star kind expected\";\n  320        KnStar\n  321    | TySink(tyT) -> \n  322:       if kindof ctx tyT <> KnStar then error dummyinfo \"star kind expected\";\n  323        KnStar\n  324    | _ -> KnStar\n  ...\n  333  let rec promote ctx t = match t with\n  334     TyVar(i,_) ->\n  335:      (match getbinding dummyinfo ctx i with\n  336           TyVarBind(tyT) -> tyT\n  337         | _ -> raise NoRuleApplies)\n\n/home/dinkarganti/tpl_exercises/fullfomsubref/support.ml:\n    8  type 'a withinfo = {i: info; v: 'a}\n    9  \n   10: let dummyinfo = UNKNOWN\n   11  let createInfo f l c = FI(f, l, c)\n   12  \n\n/home/dinkarganti/tpl_exercises/fullfomsubref/syntax.ml:\n  402    | TyVar(x,n) ->\n  403        if ctxlength ctx = n then\n  404:         pr (index2name dummyinfo ctx x)\n  405        else\n  406          pr (\"[bad index: \" ^ (string_of_int x) ^ \"/\" ^ (string_of_int n)\n\n/home/dinkarganti/tpl_exercises/fullfsub/core.ml:\n   93        TmSucc(fi, t1')\n   94    | TmPred(_,TmZero(_)) ->\n   95:       TmZero(dummyinfo)\n   96    | TmPred(_,TmSucc(_,nv1)) when (isnumericval ctx nv1) ->\n   97        nv1\n   ..\n  100        TmPred(fi, t1')\n  101    | TmIsZero(_,TmZero(_)) ->\n  102:       TmTrue(dummyinfo)\n  103    | TmIsZero(_,TmSucc(_,nv1)) when (isnumericval ctx nv1) ->\n  104:       TmFalse(dummyinfo)\n  105    | TmIsZero(fi,t1) ->\n  106        let t1' = eval1 ctx t1 in\n  ...\n  130  let promote ctx t = match t with\n  131     TyVar(i,_) ->\n  132:      (match getbinding dummyinfo ctx i with\n  133           TyVarBind(tyT) -> tyT\n  134         | _ -> raise NoRuleApplies)\n  ...\n  136  \n  137  let istyabb ctx i = \n  138:   match getbinding dummyinfo ctx i with\n  139      TyAbbBind(tyT) -> true\n  140    | _ -> false\n  141  \n  142  let gettyabb ctx i = \n  143:   match getbinding dummyinfo ctx i with\n  144      TyAbbBind(tyT) -> tyT\n  145    | _ -> raise NoRuleApplies\n\n/home/dinkarganti/tpl_exercises/fullfsub/support.ml:\n    8  type 'a withinfo = {i: info; v: 'a}\n    9  \n   10: let dummyinfo = UNKNOWN\n   11  let createInfo f l c = FI(f, l, c)\n   12  \n\n/home/dinkarganti/tpl_exercises/fullfsub/syntax.ml:\n  308      TyVar(x,n) ->\n  309        if ctxlength ctx = n then\n  310:         pr (index2name dummyinfo ctx x)\n  311        else\n  312          pr (\"[bad index: \" ^ (string_of_int x) ^ \"/\" ^ (string_of_int n)\n\n/home/dinkarganti/tpl_exercises/fullisorec/core.ml:\n   99        TmSucc(fi, t1')\n  100    | TmPred(_,TmZero(_)) ->\n  101:       TmZero(dummyinfo)\n  102    | TmPred(_,TmSucc(_,nv1)) when (isnumericval ctx nv1) ->\n  103        nv1\n  ...\n  106        TmPred(fi, t1')\n  107    | TmIsZero(_,TmZero(_)) ->\n  108:       TmTrue(dummyinfo)\n  109    | TmIsZero(_,TmSucc(_,nv1)) when (isnumericval ctx nv1) ->\n  110:       TmFalse(dummyinfo)\n  111    | TmIsZero(fi,t1) ->\n  112        let t1' = eval1 ctx t1 in\n  ...\n  138  \n  139  let istyabb ctx i = \n  140:   match getbinding dummyinfo ctx i with\n  141      TyAbbBind(tyT) -> true\n  142    | _ -> false\n  143  \n  144  let gettyabb ctx i = \n  145:   match getbinding dummyinfo ctx i with\n  146      TyAbbBind(tyT) -> tyT\n  147    | _ -> raise NoRuleApplies\n\n/home/dinkarganti/tpl_exercises/fullisorec/support.ml:\n    8  type 'a withinfo = {i: info; v: 'a}\n    9  \n   10: let dummyinfo = UNKNOWN\n   11  let createInfo f l c = FI(f, l, c)\n   12  \n\n/home/dinkarganti/tpl_exercises/fullisorec/syntax.ml:\n  300      TyVar(x,n) ->\n  301        if ctxlength ctx = n then\n  302:         pr (index2name dummyinfo ctx x)\n  303        else\n  304          pr (\"[bad index: \" ^ (string_of_int x) ^ \"/\" ^ (string_of_int n)\n\n/home/dinkarganti/tpl_exercises/fullomega/core.ml:\n   33        (0, v'::rest) -> v::rest\n   34      | (n, v'::rest) -> v' :: (f (n-1,rest))\n   35:     | _ -> error dummyinfo \"updatestore: bad index\"\n   36    in\n   37      f (n,store)\n   ..\n   77        else\n   78          let (l,store') = extendstore store t1 in\n   79:         (TmLoc(dummyinfo,l), store')\n   80    | TmDeref(fi,t1) ->\n   81        if not (isval ctx t1) then\n   ..\n   93          in (TmAssign(fi,t1,t2'), store')\n   94        else (match t1 with\n   95:             TmLoc(_,l) -> (TmUnit(dummyinfo), updatestore store l t2)\n   96            | _ -> raise NoRuleApplies)\n   97    | TmTimesfloat(fi,TmFloat(_,f1),TmFloat(_,f2)) ->\n   ..\n  119        TmSucc(fi, t1'), store'\n  120    | TmPred(_,TmZero(_)) ->\n  121:       TmZero(dummyinfo), store\n  122    | TmPred(_,TmSucc(_,nv1)) when (isnumericval ctx nv1) ->\n  123        nv1, store\n  ...\n  126        TmPred(fi, t1'), store'\n  127    | TmIsZero(_,TmZero(_)) ->\n  128:       TmTrue(dummyinfo), store\n  129    | TmIsZero(_,TmSucc(_,nv1)) when (isnumericval ctx nv1) ->\n  130:       TmFalse(dummyinfo), store\n  131    | TmIsZero(fi,t1) ->\n  132        let t1',store' = eval1 ctx store t1 in\n  ...\n  167  \n  168  let istyabb ctx i = \n  169:   match getbinding dummyinfo ctx i with\n  170      TyAbbBind(tyT,_) -> true\n  171    | _ -> false\n  172  \n  173  let gettyabb ctx i = \n  174:   match getbinding dummyinfo ctx i with\n  175      TyAbbBind(tyT,_) -> tyT\n  176    | _ -> raise NoRuleApplies\n  ...\n  246  let rec kindof ctx tyT = match tyT with\n  247      TyArr(tyT1,tyT2) ->\n  248:       if kindof ctx tyT1 <> KnStar then error dummyinfo \"star kind expected\";\n  249:       if kindof ctx tyT2 <> KnStar then error dummyinfo \"star kind expected\";\n  250        KnStar\n  251    | TyVar(i,_) ->\n  252:       let knK = getkind dummyinfo ctx i\n  253        in knK\n  254    | TyRecord(fldtys) ->\n  255        List.iter (fun (l,tyS) ->\n  256:              if kindof ctx tyS<>KnStar then error dummyinfo \"Kind * expected\")\n  257          fldtys;\n  258        KnStar\n  259    | TyAll(tyX,knK1,tyT2) ->\n  260        let ctx' = addbinding ctx tyX (TyVarBind knK1) in\n  261:       if kindof ctx' tyT2 <> KnStar then error dummyinfo \"Kind * expected\";\n  262        KnStar\n  263    | TyAbs(tyX,knK1,tyT2) ->\n  ...\n  271            KnArr(knK11,knK12) ->\n  272              if (=) knK2 knK11 then knK12\n  273:             else error dummyinfo \"parameter kind mismatch\"\n  274:         | _ -> error dummyinfo \"arrow kind expected\")\n  275    | TySome(tyX,knK,tyT2) ->\n  276        let ctx' = addbinding ctx tyX (TyVarBind(knK)) in\n  277:       if kindof ctx' tyT2 <> KnStar then error dummyinfo \"Kind * expected\";\n  278        KnStar\n  279    | _ -> KnStar\n\n/home/dinkarganti/tpl_exercises/fullomega/support.ml:\n    8  type 'a withinfo = {i: info; v: 'a}\n    9  \n   10: let dummyinfo = UNKNOWN\n   11  let createInfo f l c = FI(f, l, c)\n   12  \n\n/home/dinkarganti/tpl_exercises/fullomega/syntax.ml:\n  362      TyVar(x,n) ->\n  363        if ctxlength ctx = n then\n  364:         pr (index2name dummyinfo ctx x)\n  365        else\n  366          pr (\"[bad index: \" ^ (string_of_int x) ^ \"/\" ^ (string_of_int n)\n\n/home/dinkarganti/tpl_exercises/fullpoly/core.ml:\n   88        TmSucc(fi, t1')\n   89    | TmPred(_,TmZero(_)) ->\n   90:       TmZero(dummyinfo)\n   91    | TmPred(_,TmSucc(_,nv1)) when (isnumericval ctx nv1) ->\n   92        nv1\n   ..\n   95        TmPred(fi, t1')\n   96    | TmIsZero(_,TmZero(_)) ->\n   97:       TmTrue(dummyinfo)\n   98    | TmIsZero(_,TmSucc(_,nv1)) when (isnumericval ctx nv1) ->\n   99:       TmFalse(dummyinfo)\n  100    | TmIsZero(fi,t1) ->\n  101        let t1' = eval1 ctx t1 in\n  ...\n  127  \n  128  let istyabb ctx i = \n  129:   match getbinding dummyinfo ctx i with\n  130      TyAbbBind(tyT) -> true\n  131    | _ -> false\n  132  \n  133  let gettyabb ctx i = \n  134:   match getbinding dummyinfo ctx i with\n  135      TyAbbBind(tyT) -> tyT\n  136    | _ -> raise NoRuleApplies\n\n/home/dinkarganti/tpl_exercises/fullpoly/support.ml:\n    8  type 'a withinfo = {i: info; v: 'a}\n    9  \n   10: let dummyinfo = UNKNOWN\n   11  let createInfo f l c = FI(f, l, c)\n   12  \n\n/home/dinkarganti/tpl_exercises/fullpoly/syntax.ml:\n  300      TyVar(x,n) ->\n  301        if ctxlength ctx = n then\n  302:         pr (index2name dummyinfo ctx x)\n  303        else\n  304          pr (\"[bad index: \" ^ (string_of_int x) ^ \"/\" ^ (string_of_int n)\n\n/home/dinkarganti/tpl_exercises/fullrecon/core.ml:\n   37        TmSucc(fi, t1')\n   38    | TmPred(_,TmZero(_)) ->\n   39:       TmZero(dummyinfo)\n   40    | TmPred(_,TmSucc(_,nv1)) when (isnumericval ctx nv1) ->\n   41        nv1\n   ..\n   44        TmPred(fi, t1')\n   45    | TmIsZero(_,TmZero(_)) ->\n   46:       TmTrue(dummyinfo)\n   47    | TmIsZero(_,TmSucc(_,nv1)) when (isnumericval ctx nv1) ->\n   48:       TmFalse(dummyinfo)\n   49    | TmIsZero(fi,t1) ->\n   50        let t1' = eval1 ctx t1 in\n\n/home/dinkarganti/tpl_exercises/fullrecon/support.ml:\n    8  type 'a withinfo = {i: info; v: 'a}\n    9  \n   10: let dummyinfo = UNKNOWN\n   11  let createInfo f l c = FI(f, l, c)\n   12  \n\n/home/dinkarganti/tpl_exercises/fullref/core.ml:\n   32        (0, v'::rest) -> v::rest\n   33      | (n, v'::rest) -> v' :: (f (n-1,rest))\n   34:     | _ -> error dummyinfo \"updatestore: bad index\"\n   35    in\n   36      f (n,store)\n   ..\n  110        else\n  111          let (l,store') = extendstore store t1 in\n  112:         (TmLoc(dummyinfo,l), store')\n  113    | TmDeref(fi,t1) ->\n  114        if not (isval ctx t1) then\n  ...\n  126          in (TmAssign(fi,t1,t2'), store')\n  127        else (match t1 with\n  128:             TmLoc(_,l) -> (TmUnit(dummyinfo), updatestore store l t2)\n  129            | _ -> raise NoRuleApplies)\n  130    | TmTimesfloat(fi,TmFloat(_,f1),TmFloat(_,f2)) ->\n  ...\n  140        TmSucc(fi, t1'), store'\n  141    | TmPred(_,TmZero(_)) ->\n  142:       TmZero(dummyinfo), store\n  143    | TmPred(_,TmSucc(_,nv1)) when (isnumericval ctx nv1) ->\n  144        nv1, store\n  ...\n  147        TmPred(fi, t1'), store'\n  148    | TmIsZero(_,TmZero(_)) ->\n  149:       TmTrue(dummyinfo), store\n  150    | TmIsZero(_,TmSucc(_,nv1)) when (isnumericval ctx nv1) ->\n  151:       TmFalse(dummyinfo), store\n  152    | TmIsZero(fi,t1) ->\n  153        let t1',store' = eval1 ctx store t1 in\n  ...\n  170  \n  171  let istyabb ctx i = \n  172:   match getbinding dummyinfo ctx i with\n  173      TyAbbBind(tyT) -> true\n  174    | _ -> false\n  175  \n  176  let gettyabb ctx i = \n  177:   match getbinding dummyinfo ctx i with\n  178      TyAbbBind(tyT) -> tyT\n  179    | _ -> raise NoRuleApplies\n\n/home/dinkarganti/tpl_exercises/fullref/support.ml:\n    8  type 'a withinfo = {i: info; v: 'a}\n    9  \n   10: let dummyinfo = UNKNOWN\n   11  let createInfo f l c = FI(f, l, c)\n   12  \n\n/home/dinkarganti/tpl_exercises/fullref/syntax.ml:\n  311      TyVar(x,n) ->\n  312        if ctxlength ctx = n then\n  313:         pr (index2name dummyinfo ctx x)\n  314        else\n  315          pr (\"[bad index: \" ^ (string_of_int x) ^ \"/\" ^ (string_of_int n)\n\n/home/dinkarganti/tpl_exercises/fullsimple/core.ml:\n  102        TmSucc(fi, t1')\n  103    | TmPred(_,TmZero(_)) ->\n  104:       TmZero(dummyinfo)\n  105    | TmPred(_,TmSucc(_,nv1)) when (isnumericval ctx nv1) ->\n  106        nv1\n  ...\n  109        TmPred(fi, t1')\n  110    | TmIsZero(_,TmZero(_)) ->\n  111:       TmTrue(dummyinfo)\n  112    | TmIsZero(_,TmSucc(_,nv1)) when (isnumericval ctx nv1) ->\n  113:       TmFalse(dummyinfo)\n  114    | TmIsZero(fi,t1) ->\n  115        let t1' = eval1 ctx t1 in\n  ...\n  130  \n  131  let istyabb ctx i = \n  132:   match getbinding dummyinfo ctx i with\n  133      TyAbbBind(tyT) -> true\n  134    | _ -> false\n  135  \n  136  let gettyabb ctx i = \n  137:   match getbinding dummyinfo ctx i with\n  138      TyAbbBind(tyT) -> tyT\n  139    | _ -> raise NoRuleApplies\n\n/home/dinkarganti/tpl_exercises/fullsimple/lexer.ml:\n   90  \n   91  and filename = ref \"\"\n   92: and startLex = ref dummyinfo\n   93  \n   94  let create inFile stream =\n\n/home/dinkarganti/tpl_exercises/fullsimple/support.ml:\n    8  type 'a withinfo = {i: info; v: 'a}\n    9  \n   10: let dummyinfo = UNKNOWN\n   11  let createInfo f l c = FI(f, l, c)\n   12  \n\n/home/dinkarganti/tpl_exercises/fullsimple/syntax.ml:\n  286      TyVar(x,n) ->\n  287        if ctxlength ctx = n then\n  288:         pr (index2name dummyinfo ctx x)\n  289        else\n  290          pr (\"[bad index: \" ^ (string_of_int x) ^ \"/\" ^ (string_of_int n)\n\n/home/dinkarganti/tpl_exercises/fullsub/core.ml:\n   90        TmSucc(fi, t1')\n   91    | TmPred(_,TmZero(_)) ->\n   92:       TmZero(dummyinfo)\n   93    | TmPred(_,TmSucc(_,nv1)) when (isnumericval ctx nv1) ->\n   94        nv1\n   ..\n   97        TmPred(fi, t1')\n   98    | TmIsZero(_,TmZero(_)) ->\n   99:       TmTrue(dummyinfo)\n  100    | TmIsZero(_,TmSucc(_,nv1)) when (isnumericval ctx nv1) ->\n  101:       TmFalse(dummyinfo)\n  102    | TmIsZero(fi,t1) ->\n  103        let t1' = eval1 ctx t1 in\n  ...\n  120  \n  121  let istyabb ctx i = \n  122:   match getbinding dummyinfo ctx i with\n  123      TyAbbBind(tyT) -> true\n  124    | _ -> false\n  125  \n  126  let gettyabb ctx i = \n  127:   match getbinding dummyinfo ctx i with\n  128      TyAbbBind(tyT) -> tyT\n  129    | _ -> raise NoRuleApplies\n\n/home/dinkarganti/tpl_exercises/fullsub/support.ml:\n    8  type 'a withinfo = {i: info; v: 'a}\n    9  \n   10: let dummyinfo = UNKNOWN\n   11  let createInfo f l c = FI(f, l, c)\n   12  \n\n/home/dinkarganti/tpl_exercises/fullsub/syntax.ml:\n  277      TyVar(x,n) ->\n  278        if ctxlength ctx = n then\n  279:         pr (index2name dummyinfo ctx x)\n  280        else\n  281          pr (\"[bad index: \" ^ (string_of_int x) ^ \"/\" ^ (string_of_int n)\n\n/home/dinkarganti/tpl_exercises/fulluntyped/core.ml:\n   72        TmSucc(fi, t1')\n   73    | TmPred(_,TmZero(_)) ->\n   74:       TmZero(dummyinfo)\n   75    | TmPred(_,TmSucc(_,nv1)) when (isnumericval ctx nv1) ->\n   76        nv1\n   ..\n   79        TmPred(fi, t1')\n   80    | TmIsZero(_,TmZero(_)) ->\n   81:       TmTrue(dummyinfo)\n   82    | TmIsZero(_,TmSucc(_,nv1)) when (isnumericval ctx nv1) ->\n   83:       TmFalse(dummyinfo)\n   84    | TmIsZero(fi,t1) ->\n   85        let t1' = eval1 ctx t1 in\n\n/home/dinkarganti/tpl_exercises/fulluntyped/support.ml:\n    8  type 'a withinfo = {i: info; v: 'a}\n    9  \n   10: let dummyinfo = UNKNOWN\n   11  let createInfo f l c = FI(f, l, c)\n   12  \n\n/home/dinkarganti/tpl_exercises/fullupdate/core.ml:\n   95        TmSucc(fi, t1')\n   96    | TmPred(_,TmZero(_)) ->\n   97:       TmZero(dummyinfo)\n   98    | TmPred(_,TmSucc(_,nv1)) when (isnumericval ctx nv1) ->\n   99        nv1\n  ...\n  102        TmPred(fi, t1')\n  103    | TmIsZero(_,TmZero(_)) ->\n  104:       TmTrue(dummyinfo)\n  105    | TmIsZero(_,TmSucc(_,nv1)) when (isnumericval ctx nv1) ->\n  106:       TmFalse(dummyinfo)\n  107    | TmIsZero(fi,t1) ->\n  108        let t1' = eval1 ctx t1 in\n  ...\n  126                   if li=l then (li,(vari,v2)) else f)\n  127                fields in\n  128:       TmRecord(dummyinfo,newfields)\n  129    | TmUpdate(fi, v1, l, t2) when isval ctx v1 ->\n  130        let t2' = eval1 ctx t2 in\n  ...\n  144  \n  145  let istyabb ctx i = \n  146:   match getbinding dummyinfo ctx i with\n  147      TyAbbBind(tyT,_) -> true\n  148    | _ -> false\n  149  \n  150  let gettyabb ctx i = \n  151:   match getbinding dummyinfo ctx i with\n  152      TyAbbBind(tyT,_) -> tyT\n  153    | _ -> raise NoRuleApplies\n  ...\n  228  and kindof ctx tyT = match tyT with\n  229      TyVar(i,_) ->\n  230:       let knK = getkind dummyinfo ctx i\n  231        in knK\n  232    | TyAbs(tyX,knK1,tyT2) ->\n  ...\n  240            KnArr(knK11,knK12) ->\n  241              if (=) knK2 knK11 then knK12\n  242:             else error dummyinfo \"parameter kind mismatch\"\n  243:         | _ -> error dummyinfo \"arrow kind expected\")\n  244    | TySome(tyX,tyT1,tyT2) ->\n  245        let ctx' = addbinding ctx tyX (TyVarBind(tyT1)) in\n  246:       if kindof ctx' tyT2 <> KnStar then error dummyinfo \"Kind * expected\";\n  247        KnStar\n  248    | TyAll(tyX,tyT1,tyT2) ->\n  249        let ctx' = addbinding ctx tyX (TyVarBind tyT1) in\n  250:       if kindof ctx' tyT2 <> KnStar then error dummyinfo \"Kind * expected\";\n  251        KnStar\n  252    | TyArr(tyT1,tyT2) ->\n  253:       if kindof ctx tyT1 <> KnStar then error dummyinfo \"star kind expected\";\n  254:       if kindof ctx tyT2 <> KnStar then error dummyinfo \"star kind expected\";\n  255        KnStar\n  256    | TyRecord(fldtys) ->\n  257        List.iter (fun (l,(_,tyS)) ->\n  258:              if kindof ctx tyS<>KnStar then error dummyinfo \"Kind * expected\")\n  259          fldtys;\n  260        KnStar\n  ...\n  270  let rec promote ctx t = match t with\n  271     TyVar(i,_) ->\n  272:      (match getbinding dummyinfo ctx i with\n  273           TyVarBind(tyT) -> tyT\n  274         | _ -> raise NoRuleApplies)\n\n/home/dinkarganti/tpl_exercises/fullupdate/support.ml:\n    8  type 'a withinfo = {i: info; v: 'a}\n    9  \n   10: let dummyinfo = UNKNOWN\n   11  let createInfo f l c = FI(f, l, c)\n   12  \n\n/home/dinkarganti/tpl_exercises/fullupdate/syntax.ml:\n  366      TyVar(x,n) ->\n  367        if ctxlength ctx = n then\n  368:         pr (index2name dummyinfo ctx x)\n  369        else\n  370          pr (\"[bad index: \" ^ (string_of_int x) ^ \"/\" ^ (string_of_int n)\n\n/home/dinkarganti/tpl_exercises/joinexercise/support.ml:\n    8  type 'a withinfo = {i: info; v: 'a}\n    9  \n   10: let dummyinfo = UNKNOWN\n   11  let createInfo f l c = FI(f, l, c)\n   12  \n\n/home/dinkarganti/tpl_exercises/letexercise/support.ml:\n    8  type 'a withinfo = {i: info; v: 'a}\n    9  \n   10: let dummyinfo = UNKNOWN\n   11  let createInfo f l c = FI(f, l, c)\n   12  \n\n/home/dinkarganti/tpl_exercises/purefsub/core.ml:\n   39  let promote ctx t = match t with\n   40     TyVar(i,_) ->\n   41:      (match getbinding dummyinfo ctx i with\n   42           TyVarBind(tyT) -> tyT\n   43         | _ -> raise NoRuleApplies)\n\n/home/dinkarganti/tpl_exercises/purefsub/support.ml:\n    8  type 'a withinfo = {i: info; v: 'a}\n    9  \n   10: let dummyinfo = UNKNOWN\n   11  let createInfo f l c = FI(f, l, c)\n   12  \n\n/home/dinkarganti/tpl_exercises/purefsub/syntax.ml:\n  219      TyVar(x,n) ->\n  220        if ctxlength ctx = n then\n  221:         pr (index2name dummyinfo ctx x)\n  222        else\n  223          pr (\"[bad index: \" ^ (string_of_int x) ^ \"/\" ^ (string_of_int n)\n\n/home/dinkarganti/tpl_exercises/rcdsubbot/support.ml:\n    8  type 'a withinfo = {i: info; v: 'a}\n    9  \n   10: let dummyinfo = UNKNOWN\n   11  let createInfo f l c = FI(f, l, c)\n   12  \n\n/home/dinkarganti/tpl_exercises/recon/core.ml:\n   32        TmSucc(fi, t1')\n   33    | TmPred(_,TmZero(_)) ->\n   34:       TmZero(dummyinfo)\n   35    | TmPred(_,TmSucc(_,nv1)) when (isnumericval ctx nv1) ->\n   36        nv1\n   ..\n   39        TmPred(fi, t1')\n   40    | TmIsZero(_,TmZero(_)) ->\n   41:       TmTrue(dummyinfo)\n   42    | TmIsZero(_,TmSucc(_,nv1)) when (isnumericval ctx nv1) ->\n   43:       TmFalse(dummyinfo)\n   44    | TmIsZero(fi,t1) ->\n   45        let t1' = eval1 ctx t1 in\n\n/home/dinkarganti/tpl_exercises/recon/support.ml:\n    8  type 'a withinfo = {i: info; v: 'a}\n    9  \n   10: let dummyinfo = UNKNOWN\n   11  let createInfo f l c = FI(f, l, c)\n   12  \n\n/home/dinkarganti/tpl_exercises/reconbase/core.ml:\n   40        TmSucc(fi, t1')\n   41    | TmPred(_,TmZero(_)) ->\n   42:       TmZero(dummyinfo)\n   43    | TmPred(_,TmSucc(_,nv1)) when (isnumericval ctx nv1) ->\n   44        nv1\n   ..\n   47        TmPred(fi, t1')\n   48    | TmIsZero(_,TmZero(_)) ->\n   49:       TmTrue(dummyinfo)\n   50    | TmIsZero(_,TmSucc(_,nv1)) when (isnumericval ctx nv1) ->\n   51:       TmFalse(dummyinfo)\n   52    | TmIsZero(fi,t1) ->\n   53        let t1' = eval1 ctx t1 in\n\n/home/dinkarganti/tpl_exercises/reconbase/support.ml:\n    8  type 'a withinfo = {i: info; v: 'a}\n    9  \n   10: let dummyinfo = UNKNOWN\n   11  let createInfo f l c = FI(f, l, c)\n   12  \n\n/home/dinkarganti/tpl_exercises/simplebool/lexer.ml:\n   72  \n   73  and filename = ref \"\"\n   74: and startLex = ref dummyinfo\n   75  \n   76  let create inFile stream =\n\n/home/dinkarganti/tpl_exercises/simplebool/support.ml:\n    8  type 'a withinfo = {i: info; v: 'a}\n    9  \n   10: let dummyinfo = UNKNOWN\n   11  let createInfo f l c = FI(f, l, c)\n   12  \n\n/home/dinkarganti/tpl_exercises/tyarith/core.ml:\n   31        TmSucc(fi, t1')\n   32    | TmPred(_,TmZero(_)) ->\n   33:       TmZero(dummyinfo)\n   34    | TmPred(_,TmSucc(_,nv1)) when (isnumericval nv1) ->\n   35        nv1\n   ..\n   38        TmPred(fi, t1')\n   39    | TmIsZero(_,TmZero(_)) ->\n   40:       TmTrue(dummyinfo)\n   41    | TmIsZero(_,TmSucc(_,nv1)) when (isnumericval nv1) ->\n   42:       TmFalse(dummyinfo)\n   43    | TmIsZero(fi,t1) ->\n   44        let t1' = eval1 t1 in\n\n/home/dinkarganti/tpl_exercises/tyarith/support.ml:\n    8  type 'a withinfo = {i: info; v: 'a}\n    9  \n   10: let dummyinfo = UNKNOWN\n   11  let createInfo f l c = FI(f, l, c)\n   12  \n\n/home/dinkarganti/tpl_exercises/untyped/lexer.ml:\n   66  \n   67  and filename = ref \"\"\n   68: and startLex = ref dummyinfo\n   69  \n   70  let create inFile stream =\n\n/home/dinkarganti/tpl_exercises/untyped/support.ml:\n    8  type 'a withinfo = {i: info; v: 'a}\n    9  \n   10: let dummyinfo = UNKNOWN\n   11  let createInfo f l c = FI(f, l, c)\n   12  \n\n188 matches across 69 files\n",
+			"settings":
+			{
+				"buffer_size": 33309,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "/home/dinkarganti/tpl_exercises/arith/lexer.ml",
+			"settings":
+			{
+				"buffer_size": 22306,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/dinkarganti/tpl_exercises/fullsimple/core.ml",
+			"settings":
+			{
+				"buffer_size": 9666,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/dinkarganti/tpl_exercises/fullsimple/core.mli",
+			"settings":
+			{
+				"buffer_size": 295,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/main/scala/lambda/Context.scala",
+			"settings":
+			{
+				"buffer_size": 6819,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/main/scala/lambda/Error.scala",
+			"settings":
+			{
+				"buffer_size": 168,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/main/scala/lambda/Syntax.scala",
+			"settings":
+			{
+				"buffer_size": 2523,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/main/scala/lambda/Support.scala",
+			"settings":
+			{
+				"buffer_size": 206,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/main/scala/lambda/Binding.scala",
+			"settings":
+			{
+				"buffer_size": 346,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/dinkarganti/tpl_exercises/fullsimple/syntax.ml",
+			"settings":
+			{
+				"buffer_size": 13810,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/dinkarganti/tpl_exercises/fullsimple/syntax.mli",
+			"settings":
+			{
+				"buffer_size": 2111,
 				"line_ending": "Unix"
 			}
 		}
 	],
-	"build_system": "",
+	"build_system": "Packages/User/sbt.sublime-build",
 	"build_system_choices":
 	[
 		[
@@ -55,13 +195,29 @@
 				"Packages/SublimeHaskell/SublimeHaskell.sublime-build",
 				"Rebuild"
 			]
+		],
+		[
+			[
+				[
+					"Packages/User/sbt.sublime-build",
+					""
+				],
+				[
+					"Packages/User/stack.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/User/sbt.sublime-build",
+				""
+			]
 		]
 	],
 	"build_varint": "",
 	"command_palette":
 	{
 		"height": 392.0,
-		"last_filter": "package",
+		"last_filter": "",
 		"selected_items":
 		[
 			[
@@ -97,9 +253,10 @@
 	},
 	"console":
 	{
-		"height": 0.0,
+		"height": 263.0,
 		"history":
 		[
+			"sh"
 		]
 	},
 	"distraction_free":
@@ -117,18 +274,51 @@
 		"/home/dinkarganti/calendricalcomputations/scala/src",
 		"/home/dinkarganti/calendricalcomputations/scala/src/main",
 		"/home/dinkarganti/calendricalcomputations/scala/src/main/scala",
-		"/home/dinkarganti/calendricalcomputations/scala/src/main/scala/util"
+		"/home/dinkarganti/calendricalcomputations/scala/src/main/scala/lambda",
+		"/home/dinkarganti/calendricalcomputations/scala/src/main/scala/util",
+		"/home/dinkarganti/calendricalcomputations/scala/src/test",
+		"/home/dinkarganti/calendricalcomputations/scala/src/test/resources",
+		"/home/dinkarganti/calendricalcomputations/scala/src/test/scala",
+		"/home/dinkarganti/calendricalcomputations/scala/src/test/scala/util",
+		"/home/dinkarganti/tpl_exercises",
+		"/home/dinkarganti/tpl_exercises/fullsimple"
 	],
 	"file_history":
 	[
+		"/home/dinkarganti/tpl_exercises/bot/syntax.ml",
+		"/home/dinkarganti/tpl_exercises/equirec/syntax.ml",
+		"/home/dinkarganti/.config/sublime-text-3/Packages/User/sbt.sublime-build",
+		"/home/dinkarganti/calendricalcomputations/scala/src/main/scala/lambda/Context.scala",
+		"/home/dinkarganti/calendricalcomputations/scala/src/main/scala/lambda/FullSimple.scala",
+		"/home/dinkarganti/calendricalcomputations/scala/src/main/scala/lambda/Error.scala",
+		"/home/dinkarganti/calendricalcomputations/scala/src/main/scala/lambda/Binding.scala",
+		"/home/dinkarganti/calendricalcomputations/scala/src/main/scala/lambda/Substitution.scala",
+		"/home/dinkarganti/calendricalcomputations/scala/src/main/scala/lambda/Support.scala",
+		"/home/dinkarganti/calendricalcomputations/scala/src/main/scala/lambda/Syntax.scala",
+		"/home/dinkarganti/calendricalcomputations/.gitignore",
+		"/home/dinkarganti/tpl_exercises/fullsimple/syntax.mli",
+		"/home/dinkarganti/tpl_exercises/fullsimple/syntax.ml",
+		"/home/dinkarganti/tpl_exercises/fullsimple/support.mli",
+		"/home/dinkarganti/calendricalcomputations/scala/.gitignore",
+		"/home/dinkarganti/tpl_exercises/fullsimple/core.mli",
+		"/home/dinkarganti/tpl_exercises/fullsimple/core.ml",
+		"/home/dinkarganti/tpl_exercises/fullsimple/Makefile",
+		"/home/dinkarganti/calendricalcomputations/scala/src/main/scala/util/Graph.scala",
+		"/home/dinkarganti/calendricalcomputations/scala/build.sbt",
+		"/home/dinkarganti/tpl_exercises/arith/test.f",
+		"/home/dinkarganti/tpl_exercises/fullsimple/support.ml",
+		"/home/dinkarganti/calendricalcomputations/scala/src/main/scala/lambda/Driver.scala",
+		"/home/dinkarganti/calendricalcomputations/scala/src/test/scala/util/SimpleCacheTest.scala",
+		"/home/dinkarganti/tpl_exercises/fullequirec/test.f",
+		"/home/dinkarganti/calendricalcomputations/scala/src/test/resources/test.f",
+		"/home/dinkarganti/tpl_exercises/fullsimple/test.f",
+		"/home/dinkarganti/tpl_exercises/fulluntyped/core.ml",
 		"/home/dinkarganti/calendricalcomputations/scala/src/main/scala/util/Actor.scala",
 		"/home/dinkarganti/calendricalcomputations/scala/src/main/scala/util/Structures.scala",
 		"/home/dinkarganti/fpinscala/answers/src/main/scala/fpinscala/parallelism/Par.scala",
 		"/home/dinkarganti/calendricalcomputations/scala/src/main/scala/util/SimpleCache.scala",
 		"/home/dinkarganti/calendricalcomputations/scala/src/test/scala/calendar/GregorianCalendarSpec.scala",
-		"/home/dinkarganti/calendricalcomputations/scala/src/test/scala/util/SimpleCacheTest.scala",
 		"/home/dinkarganti/calendricalcomputations/scala/src/test/scala/util/StructuresTest.scala",
-		"/home/dinkarganti/calendricalcomputations/scala/build.sbt",
 		"/home/dinkarganti/bitcoin/src/httpserver.cpp",
 		"/home/dinkarganti/zya/src/Data/Zya/Ethereum/Sockets/Client.hs",
 		"/home/dinkarganti/zya/src/Data/Zya/Utils/IPC.hs",
@@ -222,20 +412,27 @@
 		"/home/dinkarganti/zya/src/Data/Zya/Core/TopicAllocator.hs",
 		"/home/dinkarganti/zya/src/Data/Zya/Core/ServiceTypes.hs",
 		"/home/dinkarganti/zya/Hints.md",
-		"/home/dinkarganti/zya/Setup.hs",
-		"/home/dinkarganti/zya/lint.out",
-		"/home/dinkarganti/zya/l.out",
-		"/home/dinkarganti/zya/tags"
+		"/home/dinkarganti/zya/Setup.hs"
 	],
 	"find":
 	{
-		"height": 41.0
+		"height": 55.0
 	},
 	"find_in_files":
 	{
-		"height": 144.0,
+		"height": 147.0,
 		"where_history":
 		[
+			"*.ml",
+			"*.scala",
+			"*.ml",
+			"*.scala",
+			"*.ml",
+			"*.scala",
+			"*.ml",
+			"*.scala",
+			"*.f",
+			""
 		]
 	},
 	"find_state":
@@ -243,6 +440,55 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"dummyinfo",
+			"dummyInfo",
+			"associate",
+			"try ",
+			"getBinding",
+			"termSubstTop",
+			"def termSubstTop",
+			"termSubSttop",
+			"def termSubstT",
+			"termSub",
+			"def termSubstTop",
+			"catch",
+			"List.assoc",
+			"ChoicePair",
+			"def termSubstTop",
+			"termSubstTop",
+			"TmZero",
+			"isNumeri",
+			"tmmap",
+			"tymap",
+			"extract",
+			"tmmap",
+			"termshift",
+			"tmshift",
+			"tmmap",
+			"NameBinding",
+			"tmmap",
+			"termShift",
+			"Binding",
+			"tmmap",
+			"termShift",
+			"FileInfo",
+			"TyAbbBind",
+			"TmAbbBind",
+			"TyAbbBind",
+			"NameBind",
+			"binding",
+			"tmmap",
+			"onvar",
+			"tmmap",
+			"ontype",
+			"typeShiftAbove",
+			"TmCase",
+			"CaseChoice",
+			"Tipe",
+			"File",
+			"case",
+			"CASE",
+			"alreadyImported"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -250,6 +496,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"Type"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -261,43 +508,1266 @@
 	[
 		{
 			"path": "/home/dinkarganti/calendricalcomputations/scala"
+		},
+		{
+			"path": "/home/dinkarganti/tpl_exercises"
 		}
 	],
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 4,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "build.sbt",
+					"file": "src/main/scala/lambda/Substitution.scala",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 475,
+						"buffer_size": 1372,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								163,
-								163
+								138,
+								138
 							]
 						],
 						"settings":
 						{
-							"markdonw_live_preview_last_run": 1529730732.95,
+							"markdonw_live_preview_last_run": 1530458568.4,
 							"syntax": "Packages/Scala/Scala.sublime-syntax",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
+						"translation.y": 245.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/main/scala/lambda/Evaluation.scala",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5657,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4711,
+								4711
+							]
+						],
+						"settings":
+						{
+							"auto_name": "package lambda",
+							"syntax": "Packages/Scala/Scala.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 4252.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 35,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								33,
+								33
+							]
+						],
+						"settings":
+						{
+							"auto_name": "VX2457-mhd",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/home/dinkarganti/test_haskell/Suffixes.hs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 140,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								24,
+								24
+							]
+						],
+						"settings":
+						{
+							"markdonw_live_preview_last_run": 1530646456.79,
+							"subhask_project_dir": "/home/dinkarganti/test_haskell",
+							"subhask_project_name": "test-haskell",
+							"syntax": "Packages/SublimeHaskell/Syntaxes/Haskell-SublimeHaskell.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/home/dinkarganti/test_haskell/OkasakiSet.hs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 622,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								622,
+								622
+							]
+						],
+						"settings":
+						{
+							"auto_name": "module Set where",
+							"subhask_project_dir": "/home/dinkarganti/test_haskell",
+							"subhask_project_name": "test-haskell",
+							"syntax": "Packages/SublimeHaskell/Syntaxes/ST2-tmLanguages/Haskell-SublimeHaskell.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 193.0,
+						"zoom_level": 1.0
+					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 33309,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										169,
+										178
+									],
+									[
+										350,
+										359
+									],
+									[
+										446,
+										455
+									],
+									[
+										634,
+										643
+									],
+									[
+										799,
+										808
+									],
+									[
+										980,
+										989
+									],
+									[
+										1165,
+										1174
+									],
+									[
+										1381,
+										1390
+									],
+									[
+										1648,
+										1657
+									],
+									[
+										1836,
+										1845
+									],
+									[
+										2043,
+										2052
+									],
+									[
+										2107,
+										2116
+									],
+									[
+										2224,
+										2233
+									],
+									[
+										2309,
+										2318
+									],
+									[
+										2498,
+										2507
+									],
+									[
+										2713,
+										2722
+									],
+									[
+										2976,
+										2985
+									],
+									[
+										3164,
+										3173
+									],
+									[
+										3371,
+										3380
+									],
+									[
+										3435,
+										3444
+									],
+									[
+										3552,
+										3561
+									],
+									[
+										3637,
+										3646
+									],
+									[
+										3816,
+										3825
+									],
+									[
+										4031,
+										4040
+									],
+									[
+										4246,
+										4255
+									],
+									[
+										4498,
+										4507
+									],
+									[
+										4683,
+										4692
+									],
+									[
+										4783,
+										4792
+									],
+									[
+										4931,
+										4940
+									],
+									[
+										5071,
+										5080
+									],
+									[
+										5280,
+										5289
+									],
+									[
+										5500,
+										5509
+									],
+									[
+										5729,
+										5738
+									],
+									[
+										5869,
+										5878
+									],
+									[
+										6076,
+										6085
+									],
+									[
+										6294,
+										6303
+									],
+									[
+										6545,
+										6554
+									],
+									[
+										6730,
+										6739
+									],
+									[
+										6830,
+										6839
+									],
+									[
+										6978,
+										6987
+									],
+									[
+										7120,
+										7129
+									],
+									[
+										7345,
+										7354
+									],
+									[
+										7473,
+										7482
+									],
+									[
+										7661,
+										7670
+									],
+									[
+										7868,
+										7877
+									],
+									[
+										7932,
+										7941
+									],
+									[
+										8119,
+										8128
+									],
+									[
+										8252,
+										8261
+									],
+									[
+										8337,
+										8346
+									],
+									[
+										8516,
+										8525
+									],
+									[
+										8735,
+										8744
+									],
+									[
+										8954,
+										8963
+									],
+									[
+										9238,
+										9247
+									],
+									[
+										9410,
+										9419
+									],
+									[
+										9629,
+										9638
+									],
+									[
+										9833,
+										9842
+									],
+									[
+										10040,
+										10049
+									],
+									[
+										10147,
+										10156
+									],
+									[
+										10369,
+										10378
+									],
+									[
+										10530,
+										10539
+									],
+									[
+										10672,
+										10681
+									],
+									[
+										10897,
+										10906
+									],
+									[
+										11097,
+										11106
+									],
+									[
+										11225,
+										11234
+									],
+									[
+										11413,
+										11422
+									],
+									[
+										11620,
+										11629
+									],
+									[
+										11684,
+										11693
+									],
+									[
+										11871,
+										11880
+									],
+									[
+										12004,
+										12013
+									],
+									[
+										12089,
+										12098
+									],
+									[
+										12219,
+										12228
+									],
+									[
+										12352,
+										12361
+									],
+									[
+										12483,
+										12492
+									],
+									[
+										12662,
+										12671
+									],
+									[
+										12884,
+										12893
+									],
+									[
+										13106,
+										13115
+									],
+									[
+										13355,
+										13364
+									],
+									[
+										13540,
+										13549
+									],
+									[
+										13640,
+										13649
+									],
+									[
+										13820,
+										13829
+									],
+									[
+										13989,
+										13998
+									],
+									[
+										14129,
+										14138
+									],
+									[
+										14335,
+										14344
+									],
+									[
+										14552,
+										14561
+									],
+									[
+										14803,
+										14812
+									],
+									[
+										14988,
+										14997
+									],
+									[
+										15088,
+										15097
+									],
+									[
+										15236,
+										15245
+									],
+									[
+										15376,
+										15385
+									],
+									[
+										15584,
+										15593
+									],
+									[
+										15803,
+										15812
+									],
+									[
+										16083,
+										16092
+									],
+									[
+										16255,
+										16264
+									],
+									[
+										16474,
+										16483
+									],
+									[
+										16711,
+										16720
+									],
+									[
+										16918,
+										16927
+									],
+									[
+										17025,
+										17034
+									],
+									[
+										17193,
+										17202
+									],
+									[
+										17335,
+										17344
+									],
+									[
+										17564,
+										17573
+									],
+									[
+										17649,
+										17658
+									],
+									[
+										17757,
+										17766
+									],
+									[
+										17920,
+										17929
+									],
+									[
+										18144,
+										18153
+									],
+									[
+										18351,
+										18360
+									],
+									[
+										18415,
+										18424
+									],
+									[
+										18600,
+										18609
+									],
+									[
+										18789,
+										18798
+									],
+									[
+										19007,
+										19016
+									],
+									[
+										19256,
+										19265
+									],
+									[
+										19441,
+										19450
+									],
+									[
+										19541,
+										19550
+									],
+									[
+										19689,
+										19698
+									],
+									[
+										19829,
+										19838
+									],
+									[
+										20035,
+										20044
+									],
+									[
+										20252,
+										20261
+									],
+									[
+										20502,
+										20511
+									],
+									[
+										20687,
+										20696
+									],
+									[
+										20787,
+										20796
+									],
+									[
+										20984,
+										20993
+									],
+									[
+										21217,
+										21226
+									],
+									[
+										21389,
+										21398
+									],
+									[
+										21608,
+										21617
+									],
+									[
+										21845,
+										21854
+									],
+									[
+										22052,
+										22061
+									],
+									[
+										22159,
+										22168
+									],
+									[
+										22327,
+										22336
+									],
+									[
+										22467,
+										22476
+									],
+									[
+										22672,
+										22681
+									],
+									[
+										22888,
+										22897
+									],
+									[
+										23139,
+										23148
+									],
+									[
+										23324,
+										23333
+									],
+									[
+										23424,
+										23433
+									],
+									[
+										23572,
+										23581
+									],
+									[
+										23712,
+										23721
+									],
+									[
+										23919,
+										23928
+									],
+									[
+										24089,
+										24098
+									],
+									[
+										24308,
+										24317
+									],
+									[
+										24556,
+										24565
+									],
+									[
+										24741,
+										24750
+									],
+									[
+										24841,
+										24850
+									],
+									[
+										24989,
+										24998
+									],
+									[
+										25129,
+										25138
+									],
+									[
+										25334,
+										25343
+									],
+									[
+										25550,
+										25559
+									],
+									[
+										25802,
+										25811
+									],
+									[
+										25987,
+										25996
+									],
+									[
+										26087,
+										26096
+									],
+									[
+										26286,
+										26295
+									],
+									[
+										26492,
+										26501
+									],
+									[
+										26677,
+										26686
+									],
+									[
+										26777,
+										26786
+									],
+									[
+										26976,
+										26985
+									],
+									[
+										27160,
+										27169
+									],
+									[
+										27302,
+										27311
+									],
+									[
+										27499,
+										27508
+									],
+									[
+										27693,
+										27702
+									],
+									[
+										27757,
+										27766
+									],
+									[
+										27944,
+										27953
+									],
+									[
+										28145,
+										28154
+									],
+									[
+										28278,
+										28287
+									],
+									[
+										28363,
+										28372
+									],
+									[
+										28546,
+										28555
+									],
+									[
+										28722,
+										28731
+									],
+									[
+										28941,
+										28950
+									],
+									[
+										29160,
+										29169
+									],
+									[
+										29395,
+										29404
+									],
+									[
+										29584,
+										29593
+									],
+									[
+										29799,
+										29808
+									],
+									[
+										30016,
+										30025
+									],
+									[
+										30233,
+										30242
+									],
+									[
+										30465,
+										30474
+									],
+									[
+										30666,
+										30675
+									],
+									[
+										30851,
+										30860
+									],
+									[
+										30951,
+										30960
+									],
+									[
+										31144,
+										31153
+									],
+									[
+										31349,
+										31358
+									],
+									[
+										31534,
+										31543
+									],
+									[
+										31634,
+										31643
+									],
+									[
+										31831,
+										31840
+									],
+									[
+										32018,
+										32027
+									],
+									[
+										32188,
+										32197
+									],
+									[
+										32391,
+										32400
+									],
+									[
+										32572,
+										32581
+									],
+									[
+										32668,
+										32677
+									],
+									[
+										32859,
+										32868
+									],
+									[
+										33043,
+										33052
+									],
+									[
+										33210,
+										33219
+									],
+									[
+										33309,
+										33309
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								2,
+								2
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 21,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ \t].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 23691.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/home/dinkarganti/tpl_exercises/arith/lexer.ml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 22306,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2166,
+								2166
+							]
+						],
+						"settings":
+						{
+							"markdonw_live_preview_last_run": 1530596474.0,
+							"syntax": "Packages/OCaml/OCaml.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1994.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "/home/dinkarganti/tpl_exercises/fullsimple/core.ml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9666,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3522,
+								3522
+							]
+						],
+						"settings":
+						{
+							"markdonw_live_preview_last_run": 1530475148.7,
+							"syntax": "Packages/OCaml/OCaml.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3031.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "/home/dinkarganti/tpl_exercises/fullsimple/core.mli",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 295,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"markdonw_live_preview_last_run": 1530534304.07,
+							"syntax": "Packages/OCaml/OCaml.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "src/main/scala/lambda/Context.scala",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6819,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								928,
+								928
+							]
+						],
+						"settings":
+						{
+							"markdonw_live_preview_last_run": 1530458702.95,
+							"syntax": "Packages/Scala/Scala.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 510.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "src/main/scala/lambda/Error.scala",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 168,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								53,
+								53
+							]
+						],
+						"settings":
+						{
+							"markdonw_live_preview_last_run": 1530589944.46,
+							"syntax": "Packages/Scala/Scala.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "src/main/scala/lambda/Syntax.scala",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2523,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2077,
+								2077
+							]
+						],
+						"settings":
+						{
+							"markdonw_live_preview_last_run": 1530462356.49,
+							"syntax": "Packages/Scala/Scala.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 906.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "src/main/scala/lambda/Support.scala",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 206,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								200,
+								200
+							]
+						],
+						"settings":
+						{
+							"markdonw_live_preview_last_run": 1530596814.43,
+							"syntax": "Packages/Scala/Scala.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "src/main/scala/lambda/Binding.scala",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 346,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								229,
+								229
+							]
+						],
+						"settings":
+						{
+							"markdonw_live_preview_last_run": 1530588450.06,
+							"syntax": "Packages/Scala/Scala.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "/home/dinkarganti/tpl_exercises/fullsimple/syntax.ml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13810,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5913,
+								5913
+							]
+						],
+						"settings":
+						{
+							"markdonw_live_preview_last_run": 1530461561.94,
+							"syntax": "Packages/OCaml/OCaml.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 6334.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "/home/dinkarganti/tpl_exercises/fullsimple/syntax.mli",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2111,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1754,
+								1754
+							]
+						],
+						"settings":
+						{
+							"markdonw_live_preview_last_run": 1530473518.34,
+							"syntax": "Packages/OCaml/OCaml.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1914.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 15,
 					"type": "text"
 				}
 			]
@@ -305,11 +1775,11 @@
 	],
 	"incremental_find":
 	{
-		"height": 41.0
+		"height": 42.0
 	},
 	"input":
 	{
-		"height": 41.0
+		"height": 54.0
 	},
 	"layout":
 	{
@@ -334,6 +1804,10 @@
 		]
 	},
 	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 223.0
+	},
 	"output.find_results":
 	{
 		"height": 0.0
@@ -350,7 +1824,7 @@
 	"project": "",
 	"replace":
 	{
-		"height": 99.0
+		"height": 101.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -359,6 +1833,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"test.f",
+				"tpl_exercises/arith/test.f"
+			],
 			[
 				"gre",
 				"scala/src/test/scala/calendar/GregorianCalendarSpec.scala"
@@ -728,7 +2206,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 396.0,
+	"side_bar_width": 340.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
